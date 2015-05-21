@@ -1,0 +1,26 @@
+'use strict';
+
+/**
+ * @ngdoc directive
+ * @name o2oWechatIou.directive:ngFocus
+ * @description
+ * # ngFocus
+ */
+angular.module('o2oWechatIou')
+  .directive('ngFocus', function () {
+    var FOCUS_CLASS = 'ng-focused';
+    return {
+      restrict: 'A',
+      require: 'ngModel',
+      link: function(scope, element, attrs, ctrl) {
+        ctrl.$focused = false;
+        element.bind('focus', function() {
+          element.addClass(FOCUS_CLASS);
+          scope.$apply(function() {ctrl.$focused = true;});
+        }).bind('blur', function() {
+          element.removeClass(FOCUS_CLASS);
+          scope.$apply(function() {ctrl.$focused = false;});
+        });
+      }
+    };
+  });
