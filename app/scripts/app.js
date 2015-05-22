@@ -109,12 +109,12 @@ o2oWechatIou
         }
       })
       .state('root.make-profit', {
-        url: '/funds-projects/:number',
+        url: '/make-profit/:number',
         views: {
           '': {
-            templateUrl: 'views/project/funds-project-detail.html',
-            controller: 'FundsProjectDetailCtrl',
-            controllerUrl: 'scripts/controllers/project/funds-project-detail'
+            templateUrl: 'views/project/make-profit.html',
+            controller: 'MakeProfitCtrl',
+            controllerUrl: 'scripts/controllers/project/make-profit'
           }
         }
       })
@@ -135,11 +135,6 @@ o2oWechatIou
             templateUrl: 'views/user-center/user-center.html'/*,
             controller: 'UserCenterCtrl',
             controllerUrl: 'scripts/controller/user-center/user-center'*/
-          },
-          'user-center-toggle': {
-            templateUrl: 'views/user-center/user-center-toggle.html',
-            controller: 'UserCenterCtrl',
-            controllerUrl: 'scripts/controller/user-center/user-center'
           }
         }
       })
@@ -342,7 +337,7 @@ o2oWechatIou
           $rootScope.isLogged = false;
           $rootScope.hasLoggedUser = null;
           if (routespermission.indexOf('/' + $location.path().split('/')[1]) !== -1) {
-            $location.path('/login');
+            // $location.path('/login');
           }
         }
       });
