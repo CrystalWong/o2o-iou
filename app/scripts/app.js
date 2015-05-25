@@ -69,7 +69,7 @@ o2oWechatIou
           }
         }
       })
-      .state('root.loginByWechat', {
+      /*.state('root.loginByWechat', {
         url: '/login/:openId',
         views: {
           '': {
@@ -89,7 +89,7 @@ o2oWechatIou
             controllerUrl: 'scripts/controllers/register-yeepay'
           }
         }
-      })
+      })*/
       .state('root.lianlian-callback', {
         url: '/lianlian-callback/:type',
         views: {
@@ -292,13 +292,13 @@ o2oWechatIou
         }
       })
       // 安全保障
-      .state('root.safe', {
-        url: '/safe',
+      .state('root.faq', {
+        url: '/faq',
         views: {
           '': {
-            templateUrl: 'views/safe.html',
-            controller: 'SafeCtrl',
-            controllerUrl: 'scripts/controllers/safe'
+            templateUrl: 'views/faq.html',
+            controller: 'FaqCtrl',
+            controllerUrl: 'scripts/controllers/faq'
           }
         }
       })

@@ -1,5 +1,5 @@
 {
-  "name": "p2psitemob",
+  "name": "o2oWechatIou",
   "version": "0.0.0",
   "dependencies": {
     "connect-modrewrite": "^0.7.11",

@@ -32,12 +32,9 @@ angular.module('o2oWechatIou')
     }
     
     $scope.signUp = function(user) {
-      signUpBe.$create({
-        name: user.name,
-        password: md5.createHash(user.password),
+      register.$create({
         mobile: user.mobile,
         captcha: user.captcha,
-        inviteCode: user.inviteCode,
         openId: openId
       }).$then(function(response) {
         if (response.ret === -1) {
