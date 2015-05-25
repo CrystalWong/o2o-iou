@@ -90,13 +90,13 @@ o2oWechatIou
           }
         }
       })
-      .state('root.yeepay-callback', {
-        url: '/yeepay-callback/:type/:status',
+      .state('root.lianlian-callback', {
+        url: '/lianlian-callback/:type',
         views: {
           '': {
-            templateUrl: 'views/yeepay-callback.html',
-            controller: 'YeepayCallbackCtrl',
-            controllerUrl: 'scripts/controllers/yeepay-callback'
+            templateUrl: 'views/lianlian-callback.html',
+            controller: 'LianlianCallbackCtrl',
+            controllerUrl: 'scripts/controllers/lianlian-callback'
           }
         }
       })
@@ -349,4 +349,4 @@ o2oWechatIou
     });
   })
 
-  .constant('DEFAULT_DOMAIN', '/hongcai/rest');
+  .constant('DEFAULT_DOMAIN', '/ious/rest');
