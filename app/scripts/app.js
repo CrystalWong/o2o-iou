@@ -108,7 +108,7 @@ o2oWechatIou
           }
         }
       })
-      .state('root.make-profit', {
+      /*.state('root.make-profit', {
         url: '/make-profit/:number',
         views: {
           '': {
@@ -117,7 +117,7 @@ o2oWechatIou
             controllerUrl: 'scripts/controllers/project/make-profit'
           }
         }
-      })
+      })*/
       .state('root.registration-agreement', {
         url: '/registration-agreement',
         views: {
