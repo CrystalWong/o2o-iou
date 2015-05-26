@@ -9,11 +9,7 @@
  */
 angular.module('o2oWechatIou')
   .controller('MainCtrl', ['$scope', '$state', '$rootScope', '$stateParams', 'fundsProjects', 'restmod', 'DEFAULT_DOMAIN', 'config', function($scope, $state, $rootScope, $stateParams, fundsProjects, restmod, DEFAULT_DOMAIN, config) {
-    // 宏金盈详情页面
-    // var number = $stateParams.number;
-    // if (!number) {
-    //   $state.go('root.main');
-    // }
+    $rootScope.selected = 'financing';
 
     $scope.showFundsAgreement = false;
     $scope.toggle = function () {

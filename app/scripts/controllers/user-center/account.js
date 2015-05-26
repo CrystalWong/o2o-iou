@@ -20,7 +20,7 @@ angular.module('o2oWechatIou')
       });
     }
 
-    $rootScope.selectedSide =  'account';
+    $rootScope.selected =  'account';
 
     // 退出登录功能
     $scope.toLogout = function() {
