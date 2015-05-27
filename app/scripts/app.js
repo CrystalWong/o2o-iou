@@ -25,7 +25,7 @@ o2oWechatIou
     $uiViewScrollProvider.useAnchorScroll();
     $stateProvider
       .state('register', {
-        url: '/register',
+        url: '/register/:openid',
         views: {
           'register': {
             templateUrl: 'views/register.html',
@@ -155,15 +155,28 @@ o2oWechatIou
     var titleMap = {'issue': '常见问题', 'about': '帮助中心', 'safe': '安全保障', 'account': '账户总览'};
     $rootScope.$on('$stateChangeStart', function() {
       // $rootScope.showTitle = titleMap[path];
-      var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
-      // 获取微信code
-      $rootScope.wechatCode = location.search.split('code=')[1].split('&state')[0];
-      checkModel.$find($rootScope.wechatCode + '/openid').$then(function(response){
-        $rootScope.openid = response.openid;
-        if (!response.mobile) {
-          $state.go('register');
+      if(!$rootScope.openid) {
+        var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
+        // 获取微信code
+        $rootScope.wechatCodeStr = location.search.split('code=')[1];
+        if($rootScope.wechatCodeStr) {
+          $rootScope.wechatCode = $rootScope.wechatCodeStr.split('&state')[0];
         }
-      });
+        
+        if ($rootScope.wechatCode) {
+          checkModel.$find($rootScope.wechatCode + '/openid').$then(function(response){
+            $rootScope.openid = response.openid;
+            $rootScope.userInfo = response;
+            if (!response.mobile) {
+              $state.go('register');
+            }
+          });
+        }
+      }
+        
+      
+      
+      
       
       /*checkModel.$find('checkSession').$then(function(response) {
         if (response.user) {

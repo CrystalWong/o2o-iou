@@ -10,7 +10,7 @@
 angular.module('o2oWechatIou')
   .controller('MainCtrl', ['$scope', '$state', '$rootScope', '$stateParams', 'fundsProjects', 'restmod', 'DEFAULT_DOMAIN', 'config', function($scope, $state, $rootScope, $stateParams, fundsProjects, restmod, DEFAULT_DOMAIN, config) {
     $rootScope.selected = 'financing';
-
+    
     $scope.showFundsAgreement = false;
     $scope.toggle = function () {
       $scope.showFundsAgreement = !$scope.showFundsAgreement;
@@ -45,9 +45,8 @@ angular.module('o2oWechatIou')
         // how to bulid investment path restmod.model
         // restmod.model(DEFAULT_DOMAIN + '/projects')
         
-        // restmod.model(DEFAULT_DOMAIN + '/fundsProjects/' + simpleFundsProject.number + '/users/' + $rootScope.hasLoggedUser.id + '/investment').$create({
-        restmod.model(DEFAULT_DOMAIN + '/fundsProjects/' + simpleFundsProject.number + '/users/6/investment').$create({
-          // fundsProjects.$find(number + '/users/' + $rootScope.hasLoggedUser.id + '/investment').$create({
+        restmod.model(DEFAULT_DOMAIN + '/fundsProjects/' + simpleFundsProject.number + '/users/' + $rootScope.userInfo.id + '/investment').$create({
+        // restmod.model(DEFAULT_DOMAIN + '/fundsProjects/' + simpleFundsProject.number + '/users/6/investment').$create({
           amount: simpleFundsProject.investAmount,
           projectId: simpleFundsProject.id,
           isRepeat: 2
@@ -56,13 +55,13 @@ angular.module('o2oWechatIou')
           if (response.$status === 'ok') {
             if (response.number !== null && response.number !== undefined) {
               // restmod.model(DEFAULT_DOMAIN + '/orders/' + simpleFundsProject.number + '/users/' + $rootScope.hasLoggedUser.id + '/payment').$create({'orderNumber' : response.number}).$then(function(response) {
-              restmod.model(DEFAULT_DOMAIN + '/orders/' + simpleFundsProject.number + '/users/6/payment').$create({'orderNumber' : response.number}).$then(function(response) {
-                if (response.$status === 'ok') {
-                $state.go('investment-confirm');
-                } else {
-                  $scope.msg = response.msg;
-                }
-              })
+              // restmod.model(DEFAULT_DOMAIN + '/orders/' + simpleFundsProject.number + '/users/6/payment').$create({'orderNumber' : response.number}).$then(function(response) {
+              //   if (response.$status === 'ok') {
+                $state.go('identity',{'number': response.number});
+              //   } else {
+              //     $scope.msg = response.msg;
+              //   }
+              // })
             } else if (response.ret === -1) {
               $scope.msg = response.msg;
             }
