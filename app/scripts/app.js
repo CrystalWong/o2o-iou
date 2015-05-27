@@ -91,7 +91,7 @@ o2oWechatIou
         }
       })*/
       .state('identity', {
-        url: '/identity',
+        url: '/identity/:number',
         views: {
           'identity': {
             templateUrl: 'views/identity.html',

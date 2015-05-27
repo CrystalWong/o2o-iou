@@ -141,18 +141,7 @@ angular.module('o2oWechatIou')
           // 重复下单后，response.number为undefined
           if (response.$status === 'ok') {
             if (response.number !== null && response.number !== undefined) {
-              restmod.model(DEFAULT_DOMAIN + '/orders/' + response.number + '/users/' + $rootScope.hasLoggedUser.id + '/payment').$create().$then(function(response) {
-                if (response.$status === 'ok') {
-                  var req = response.req;
-                  var sign = response.sign;
-                  var _f = newForm(); //创建一个form表单
-                  createElements(_f, 'req', req); //创建form中的input对象
-                  createElements(_f, 'sign', sign);
-                  _f.action = config.YEEPAY_ADDRESS + 'toTransfer'; //form提交地址
-                  _f.submit(); //提交
-                }
-                // $state.go('');
-              })
+              $state.go('root.identity',{number : response.number});
             } else if (response.ret === -1) {
               $scope.msg = response.msg;
             }
@@ -162,5 +151,4 @@ angular.module('o2oWechatIou')
         })
       }
     };
-
   }]);
