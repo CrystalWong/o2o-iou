@@ -69,27 +69,6 @@ o2oWechatIou
           }
         }
       })
-      /*.state('root.loginByWechat', {
-        url: '/login/:openId',
-        views: {
-          '': {
-            templateUrl: 'views/login.html',
-            controller: 'LoginCtrl',
-            controllerUrl: 'scripts/controllers/login'
-
-          }
-        }
-      })
-      .state('root.register-success', {
-        url: '/register-success/:userId',
-        views: {
-          '': {
-            templateUrl: 'views/register-success.html',
-            controller: 'RegisterYeepayCtrl',
-            controllerUrl: 'scripts/controllers/register-yeepay'
-          }
-        }
-      })*/
       .state('identity', {
         url: '/identity',
         views: {
@@ -110,24 +89,6 @@ o2oWechatIou
           }
         }
       })
-      .state('root.registerByWechat', {
-        url: '/register/:openId',
-        views: {
-          '': {
-            templateUrl: 'views/register.html'
-          }
-        }
-      })
-      /*.state('root.make-profit', {
-        url: '/make-profit/:number',
-        views: {
-          '': {
-            templateUrl: 'views/project/make-profit.html',
-            controller: 'MakeProfitCtrl',
-            controllerUrl: 'scripts/controllers/project/make-profit'
-          }
-        }
-      })*/
       .state('root.registration-agreement', {
         url: '/registration-agreement',
         views: {
@@ -159,149 +120,9 @@ o2oWechatIou
           }
         }
       })
-      // 投资统计
-      .state('root.user-center.investments-stat', {
-        url: '/investments-stat',
-        views: {
-          '': {
-            templateUrl: 'views/user-center/investments-stat.html',
-            controller: 'InvestmentsStatCtrl',
-            controllerUrl: 'scripts/controllers/user-center/investments-stat'
-          }
-        }
-      })
-      // 基本资料
-      .state('root.user-center.info', {
-        url: '/info',
-        views: {
-          '': {
-            templateUrl: 'views/user-center/info.html',
-            controller: 'InfoCtrl',
-            controllerUrl: 'scripts/controllers/user-center/info'
-          }
-        }
-      })
-      // 我的债权
-      .state('root.user-center.credits', {
-        url: '/credits',
-        views: {
-          '': {
-            templateUrl: 'views/user-center/credit.html',
-            controller: 'CreditCtrl',
-            controllerUrl: 'scripts/controllers/user-center/credit'
-          }
-        }
-      })
-      // 我的订单
-      .state('root.user-center.orders', {
-        url: '/orders',
-        views: {
-          '': {
-            templateUrl: 'views/user-center/order.html',
-            controller: 'OrderCtrl',
-            controllerUrl: 'scripts/controllers/user-center/order'
-          }
-        }
-      })
-      // 充值
-      .state('root.user-center.recharge', {
-        url: '/recharge',
-        views: {
-          '': {
-            templateUrl: 'views/user-center/recharge.html',
-            controller: 'RechargeCtrl',
-            controllerUrl: 'scripts/controllers/user-center/recharge'
-          }
-        }
-      })
-      // 提现
-      .state('root.user-center.withdraw', {
-        url: '/withdraw',
-        views: {
-          '': {
-            templateUrl: 'views/user-center/withdraw.html',
-            controller: 'WithdrawCtrl',
-            controllerUrl: 'scripts/controllers/user-center/withdraw'
-          }
-        }
-      })
-      // 银行卡管理
-      .state('root.user-center.bankcard', {
-        url: '/bankcard',
-        views: {
-          '': {
-            templateUrl: 'views/user-center/bankcard.html',
-            controller: 'BankcardCtrl',
-            controllerUrl: 'scripts/controllers/user-center/bankcard'
-          }
-        }
-      })
-      // 回款计划
-      .state('root.user-center.payment-collection', {
-        url: '/payment-collection',
-        views: {
-          '': {
-            templateUrl: 'views/user-center/payment-collection.html',
-            controller: 'PaymentCollectionCtrl',
-            controllerUrl: 'scripts/controllers/user-center/payment-collection'
-          }
-        }
-      })
-      // 站内消息
-      .state('root.user-center.messages', {
-        url: '/messages',
-        views: {
-          '': {
-            templateUrl: 'views/user-center/message.html',
-            controller: 'MessageCtrl',
-            controllerUrl: 'scripts/controllers/user-center/message'
-          }
-        }
-      })
-      // 交易记录
-      .state('root.user-center.deals', {
-        url: '/deals',
-        views: {
-          '': {
-            templateUrl: 'views/user-center/deal.html',
-            controller: 'DealCtrl',
-            controllerUrl: 'scripts/controllers/user-center/deal'
-          }
-        }
-      })
-      // 易宝新页面打开中转页
-      .state('root.yeepay-transfer', {
-        url: '/yeepay-transfer/:type/:number',
-        views: {
-          '': {
-            templateUrl: 'views/yeepay-transfer.html',
-            controller: 'YeepayTransferCtrl',
-            controllerUrl: 'scripts/controllers/yeepay-transfer'
-          }
-        }
-      })
-      // 预约记录
-      .state('root.demo', {
-        url: '/demo',
-        views: {
-          '': {
-            templateUrl: 'views/demo.html',
-            controller: 'DemoCtrl'
-          }
-        }
-      })
+      
+     
       // 常见问题
-      .state('root.issue', {
-        url: '/issue',
-        views: {
-          '': {
-            templateUrl: 'views/issue.html',
-            controller: 'IssueCtrl',
-            controllerUrl: 'scripts/controllers/issue'
-          }
-        }
-      })
-      // 安全保障
       .state('root.faq', {
         url: '/faq',
         views: {
@@ -312,8 +133,8 @@ o2oWechatIou
           }
         }
       })
-      // 宏财简介
-      .state('root.about', {
+      // 关于我们
+      /*.state('root.about', {
         url: '/about',
         views: {
           '': {
@@ -323,7 +144,7 @@ o2oWechatIou
 
           }
         }
-      });
+      });*/
     $urlRouterProvider.otherwise('/');
 
 }])
@@ -339,6 +160,9 @@ o2oWechatIou
       $rootScope.wechatCode = location.search.split('code=')[1].split('&state')[0];
       checkModel.$find($rootScope.wechatCode + '/openid').$then(function(response){
         $rootScope.openid = response.openid;
+        if (!response.mobile) {
+          $state.go('register');
+        }
       });
       
       /*checkModel.$find('checkSession').$then(function(response) {

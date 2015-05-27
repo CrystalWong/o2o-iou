@@ -9,29 +9,14 @@
  */
 angular.module('o2oWechatIou')
   .controller('RegisterCtrl', ['$rootScope', '$scope', '$state', '$stateParams', 'md5', 'register', 'wechat', 'mobileCaptcha', function($rootScope, $scope, $state, $stateParams, md5, register, wechat, mobileCaptcha) {
-    // 注册链接上是否有邀请码
-    if ($stateParams.inviteCode) {
-      $scope.user = {
-        inviteCode: $stateParams.inviteCode
-      };
-    }
-
     $scope.showRegistrationAgreement = false;
     $scope.toggle = function () {
       $scope.showRegistrationAgreement = !$scope.showRegistrationAgreement;
     };
 
-    var openId = $stateParams.openId;
-    var signUpBe;
-    if (openId === undefined || openId === '' || openId === null) {
-      // 直接走注册流程
-      signUpBe = register;
-    } else {
-      // wechat路线
-      signUpBe = wechat.signUp;
-    }
-    
+    $scope.signUpButton = false;
     $scope.signUp = function(user) {
+      $scope.signUpButton = true;
       register.$create({
         mobile: user.mobile,
         captcha: user.captcha,

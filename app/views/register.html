@@ -23,7 +23,7 @@
           <button type="button" class="border-ra-0p5 padding-0 u-full-width {{registerForm.mobile.$invalid ? 'button-disabled' : 'button-primary'}}" ng-click="sendMobileCaptcha(user);" ng-disabled="registerForm.mobile.$invalid">获取验证码</button>
         </p>
         <p class="signin margin-0 text-center">
-            <input type="submit" class="button button-primary border-ra-0p5 u-full-width {{registerForm.$invalid ? 'button-disabled' : ''}}" ng-disabled="registerForm.$invalid" value="注册并绑定"/>
+            <input type="submit" class="button button-primary border-ra-0p5 u-full-width {{registerForm.$invalid ? 'button-disabled' : ''}}" ng-disabled="registerForm.$invalid || signUpButton" value="注册并绑定"/>
         </p>
     </form> 
 </div>
