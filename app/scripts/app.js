@@ -47,7 +47,7 @@ o2oWechatIou
           }
         }
       })
-      // 注册登录流程
+      // 去赚钱
       .state('root.main', {
         url: '/',
         views: {
@@ -90,6 +90,16 @@ o2oWechatIou
           }
         }
       })*/
+      .state('identity', {
+        url: '/identity',
+        views: {
+          'identity': {
+            templateUrl: 'views/identity.html',
+            controller: 'IdentityCtrl',
+            controllerUrl: 'scripts/controllers/identity'
+          }
+        }
+      })
       .state('root.lianlian-callback', {
         url: '/lianlian-callback/:type',
         views: {
@@ -317,14 +327,17 @@ o2oWechatIou
     $urlRouterProvider.otherwise('/');
 
 }])
-  .run(function($rootScope, DEFAULT_DOMAIN, $state, $location, $http, restmod) {
+  .run(function($rootScope, $stateParams, DEFAULT_DOMAIN, $state, $location, $http, restmod) {
     var routespermission = [
       '/user-center'
     ];
     var titleMap = {'issue': '常见问题', 'about': '帮助中心', 'safe': '安全保障', 'account': '账户总览'};
     $rootScope.$on('$stateChangeStart', function() {
       // $rootScope.showTitle = titleMap[path];
-      $rootScope.showMe = false;
+
+      // 获取微信code
+      // $rootScope.wechatCode = location.search.split('code=')[1].split('&state')[0];
+
       var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
       checkModel.$find('checkSession').$then(function(response) {
         if (response.user) {
