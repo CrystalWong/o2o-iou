@@ -334,12 +334,14 @@ o2oWechatIou
     var titleMap = {'issue': '常见问题', 'about': '帮助中心', 'safe': '安全保障', 'account': '账户总览'};
     $rootScope.$on('$stateChangeStart', function() {
       // $rootScope.showTitle = titleMap[path];
-
-      // 获取微信code
-      // $rootScope.wechatCode = location.search.split('code=')[1].split('&state')[0];
-
       var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
-      checkModel.$find('checkSession').$then(function(response) {
+      // 获取微信code
+      $rootScope.wechatCode = location.search.split('code=')[1].split('&state')[0];
+      checkModel.$find($rootScope.wechatCode + '/openid').$then(function(response){
+        $rootScope.openid = response.openid;
+      });
+      
+      /*checkModel.$find('checkSession').$then(function(response) {
         if (response.user) {
           $rootScope.isLogged = true;
           $rootScope.hasLoggedUser = response.user;
@@ -353,7 +355,7 @@ o2oWechatIou
             // $location.path('/login');
           }
         }
-      });
+      });*/
     });
     $rootScope.$on('$stateChangeSuccess', function() {
       var path = $location.path().split('/')[1];

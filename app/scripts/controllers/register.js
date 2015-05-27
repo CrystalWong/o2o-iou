@@ -35,17 +35,12 @@ angular.module('o2oWechatIou')
       register.$create({
         mobile: user.mobile,
         captcha: user.captcha,
-        openId: openId
+        openId: $rootScope.openid
       }).$then(function(response) {
         if (response.ret === -1) {
           $scope.msg = response.msg;
         } else {
-          $rootScope.user = {
-            id: response.id
-          };
-          $state.go('root.register-success', {
-            userId: $rootScope.user.id
-          });
+          $state.go('root.main');
         }
       });
     };
