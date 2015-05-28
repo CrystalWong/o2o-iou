@@ -113,10 +113,10 @@ module.exports = function(grunt) {
         port: 4000,
         https: false
       }, {
-        context: '/hongcai',
+        context: '/ious',
         host: '192.168.1.43',
         // host: '192.168.10.83',
-        port: 8080,
+        port: 8120,
         https: false
       }],
       livereload: {
