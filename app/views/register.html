@@ -1,0 +1,29 @@
+<div class="bg-white padding-t-2">
+    <div class="text-center padding-b-1">
+        <p class="ft-2 margin-0"><strong>用户注册</strong></p>
+    </div>
+    <hr class="margin-0 border-dotted-top">
+    <form class="register margin-0 padding-2 ft-grey2" name="registerForm" autocomplete="on" ng-submit="signUp(user);">
+        <p class="margin-0 border-grey border-ra-0p5 margin-b-1p5" ng-class="{'border-red':registerForm.mobile.$dirty && registerForm.mobile.$invalid && !registerForm.mobile.$blur}">
+            <label for="mobilesignup"><small>手机号码</small>
+            </label>
+            <input id="mobilesignup" name="mobile" ensure-unique ng-model="user.mobile" ng-pattern="/^((13[0-9])|(15[^4,\D])|(18[0-9])|(17[0678])|(14[0-9]))\d{8}$/" type="tel" placeholder="输入11位手机号用于登录" required ng-focus/>
+            
+        </p>
+        <p class="ft-red" ng-if="registerForm.mobile.$dirty && registerForm.mobile.$invalid && !registerForm.mobile.$focused">
+          <small ng-if="registerForm.mobile.$error.unique">手机号码已被占用</small>
+          <small ng-if="registerForm.mobile.$error.pattern">手机号码格式不正确</small>
+        </p>
+        <p class="margin-0 border-grey border-ra-0p5 margin-b-1p5 u-pull-left" style="width: 65%;">
+          <label for="captchasignup" style="width: 39%;"><small>验证码</small>
+          </label>
+          <input id="captchasignup" name="captchasignup" ng-model="user.captcha" required="required" type="text" placeholder="输入6位验证码" style="width: 61%;" />
+        </p>
+        <p class="getCaptcha u-pull-left" style="width: 30%;">
+          <button type="button" class="border-ra-0p5 padding-0 u-full-width {{registerForm.mobile.$invalid ? 'button-disabled' : 'button-primary'}}" ng-click="sendMobileCaptcha(user);" ng-disabled="registerForm.mobile.$invalid">获取验证码</button>
+        </p>
+        <p class="signin margin-0 text-center">
+            <input type="submit" class="button button-primary border-ra-0p5 u-full-width {{registerForm.$invalid ? 'button-disabled' : ''}}" ng-disabled="registerForm.$invalid || signUpButton" value="注册并绑定"/>
+        </p>
+    </form> 
+</div>

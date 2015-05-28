@@ -1,0 +1,37 @@
+<div class="funds-project bg-white">
+    <!-- 投资模块 -->
+<!--     <div ng-include src="'views/project/_funds-project-investment.html'">
+</div> -->
+    <form name="investForm" class="investForm overflow-hid margin-0" ng-submit="toInvest(simpleFundsProject)">
+      <div class="padding-t-2 padding-l-2 padding-r-2">
+        <label>买入金额（元）</label>
+        <input type="number" name="investAmount" min="1" max="1000" ng-model="simpleFundsProject.investAmount" placeholder="最低1元起，最高1000元" class="investAmount padding-t-1 padding-b-1 margin-b-1" required>
+        <p class="ft-orange ft-1p2 margin-0">*买入当日计息，项目到期日&nbsp;<strong>{{ simpleFundsProject.repaymentDate | amDateFormat: 'YYYY/MM/DD' }}</strong>,期间不可提现</p>
+        <hr class="margin-0 margin-t-1 margin-b-1">
+        <p class="overflow-hid margin-b-2">
+          <span class="u-pull-left">到期利息：<strong class="ft-blue">{{ simpleFundsProject.investAmount*profitSingle || 0 | number: 2 }}</strong>元</span>
+          <span class="u-pull-right">年化收益：<strong class="ft-blue">{{ simpleFundsProject.product.baseRate}}%</strong></span>
+        </p>
+      </div>
+      <hr class="border-width margin-0 margin-b-1">
+      <div class="padding-r-2 padding-l-2">
+        <label>支付方式</label>
+        <hr class="border-dotted-top margin-0 margin-b-1p5">
+        <input type="radio" class="margin-0" checked>
+        <img src="/images/lianlianpay.png" width="40%">
+        <small>(手机支付，WEB支付)</small>
+        <button class="button button-primary border-ra-0p5 margin-t-1p5 ft-1p8">买入</button>
+        <div class="text-center ft-1p2" ng-if="msg">{{ msg }}</a></div>
+        <div class="text-center ft-1p2">点击买入即视为同意<a href="javascript:;" class="underline">《购买协议》</a></div>
+      </div>
+      <div class="margin-t-2p5 text-center ft-1p2"><a class="ft-grey1" ui-sref="root.faq">常见问题</a></div>
+      
+    </form> 
+<!--   <div class="text-center padding-b-2">
+  <a href="javascript:;" ng-click="toggle();" class="ft-grey2">《宏金盈协议范本》</a>
+</div>
+
+<div class="alert-agreement" ng-show="showFundsAgreement" ng-include src="'views/_funds-agreement.html'">
+</div> -->
+
+
