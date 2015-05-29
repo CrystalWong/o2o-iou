@@ -10,6 +10,5 @@
 angular.module('o2oWechatIou')
   .controller('LianlianCallbackCtrl', ['$rootScope','$scope', '$state', '$stateParams', function ($rootScope, $scope, $state, $stateParams) {
     $rootScope.selected = 'financing';
-    $scope.page = '0';
-
+    $scope.number = $stateParams.number;
   }]);
