@@ -8,7 +8,7 @@
  * Controller of the o2oWechatIou
  */
 angular.module('o2oWechatIou')
-  .controller('RegisterCtrl', ['$rootScope', '$scope', '$state', '$stateParams', 'md5', 'register', 'wechat', 'mobileCaptcha', function($rootScope, $scope, $state, $stateParams, md5, register, wechat, mobileCaptcha) {
+  .controller('RegisterCtrl', ['$rootScope', '$scope', '$state', '$stateParams', 'md5', 'register', 'wechat', 'mobileCaptcha', 'config', function($rootScope, $scope, $state, $stateParams, md5, register, wechat, mobileCaptcha, config) {
     $scope.showRegistrationAgreement = false;
     $scope.toggle = function () {
       $scope.showRegistrationAgreement = !$scope.showRegistrationAgreement;
@@ -25,7 +25,7 @@ angular.module('o2oWechatIou')
         if (response.ret === -1) {
           $scope.msg = response.msg;
         } else {
-          window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb0a7af1f7ab4d74a&redirect_uri=http%3A%2F%2Fweixin-activity.tunnel.mobi%2F&response_type=code&scope=snsapi_base&state=123#wechat_redirect';
+          window.location.href = config.weixin_redirect;
         }
       });
     };
