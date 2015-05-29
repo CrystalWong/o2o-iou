@@ -25,7 +25,7 @@ o2oWechatIou
     $uiViewScrollProvider.useAnchorScroll();
     $stateProvider
       .state('register', {
-        url: '/register/:openid',
+        url: '/register',
         views: {
           'register': {
             templateUrl: 'views/register.html',
@@ -47,7 +47,7 @@ o2oWechatIou
           }
         }
       })
-      // 去赚钱
+      // 打白条
       .state('root.main', {
         url: '/',
         views: {
@@ -58,14 +58,14 @@ o2oWechatIou
           }
         }
       })
-      .state('root.login', {
-        url: '/login',
+      // 去赚钱
+      .state('root.make-profit', {
+        url: 'make-profit',
         views: {
           '': {
-            templateUrl: 'views/login.html',
-            controller: 'LoginCtrl',
-            controllerUrl: 'scripts/controllers/login'
-
+            templateUrl: 'views/make-profit.html',
+            controller: 'MakeProfitCtrl',
+            controllerUrl: 'scripts/controllers/make-profit'
           }
         }
       })
@@ -80,7 +80,7 @@ o2oWechatIou
         }
       })
       .state('root.lianlian-callback', {
-        url: '/lianlian-callback/:type',
+        url: '/lianlian-callback/:number',
         views: {
           '': {
             templateUrl: 'views/lianlian-callback.html',
@@ -89,23 +89,21 @@ o2oWechatIou
           }
         }
       })
-      .state('root.registration-agreement', {
+      /*.state('root.registration-agreement', {
         url: '/registration-agreement',
         views: {
           '': {
             templateUrl: 'views/registration-agreement.html'
           }
         }
-      })
+      })*/
       // 个人中心
       .state('root.user-center', {
         abstract: true,
         url: '/user-center',
         views: {
           'user-center': {
-            templateUrl: 'views/user-center/user-center.html'/*,
-            controller: 'UserCenterCtrl',
-            controllerUrl: 'scripts/controller/user-center/user-center'*/
+            templateUrl: 'views/user-center/user-center.html'
           }
         }
       })
@@ -155,44 +153,25 @@ o2oWechatIou
     var titleMap = {'issue': '常见问题', 'about': '帮助中心', 'safe': '安全保障', 'account': '账户总览'};
     $rootScope.$on('$stateChangeStart', function() {
       // $rootScope.showTitle = titleMap[path];
-      if(!$rootScope.openid) {
+      // TODO 多次请求？
+     /* if (!$rootScope.openid || $rootScope.openid === null || $rootScope.openid === undefined) {
         var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
         // 获取微信code
         $rootScope.wechatCodeStr = location.search.split('code=')[1];
-        if($rootScope.wechatCodeStr) {
+        if ($rootScope.wechatCodeStr) {
           $rootScope.wechatCode = $rootScope.wechatCodeStr.split('&state')[0];
-        }
-        
-        if ($rootScope.wechatCode) {
-          checkModel.$find($rootScope.wechatCode + '/openid').$then(function(response){
-            $rootScope.openid = response.openid;
-            $rootScope.userInfo = response;
-            if (!response.mobile) {
-              $state.go('register');
-            }
-          });
-        }
-      }
-        
-      
-      
-      
-      
-      /*checkModel.$find('checkSession').$then(function(response) {
-        if (response.user) {
-          $rootScope.isLogged = true;
-          $rootScope.hasLoggedUser = response.user;
-          $rootScope.securityStatus = response.securityStatus;
-          $rootScope.account = response.account;
-          //用户未登录状态
-        } else if(response.ret === -1) {
-          $rootScope.isLogged = false;
-          $rootScope.hasLoggedUser = null;
-          if (routespermission.indexOf('/' + $location.path().split('/')[1]) !== -1) {
-            // $location.path('/login');
+          if ($rootScope.wechatCode) {
+            checkModel.$find($rootScope.wechatCode + '/openid').$then(function(response){
+              $rootScope.openid = response.openid;
+              $rootScope.userInfo = response;
+              if (!response.mobile) {
+                $state.go('register');
+              }
+            });
           }
         }
-      });*/
+      }*/
+      
     });
     $rootScope.$on('$stateChangeSuccess', function() {
       var path = $location.path().split('/')[1];
