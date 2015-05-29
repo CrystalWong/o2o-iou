@@ -10,7 +10,7 @@
 var o2oWechatIou = angular.module('o2oWechatIou', [
   'ngAnimate',
   'ngTouch',
-  'famous.angular',
+  // 'famous.angular',
   'ui.router',
   'restmod',
   'config',
