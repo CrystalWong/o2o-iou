@@ -48,8 +48,8 @@ o2oWechatIou
         }
       })
       // 打白条
-      .state('root.main', {
-        url: '/',
+      .state('root.iou', {
+        url: '/iou',
         views: {
           '': {
             templateUrl: 'views/main.html',
@@ -59,8 +59,8 @@ o2oWechatIou
         }
       })
       // 去赚钱
-      .state('root.make-profit', {
-        url: 'make-profit',
+      .state('root.main', {
+        url: '/',
         views: {
           '': {
             templateUrl: 'views/make-profit.html',
