@@ -15,33 +15,31 @@ angular.module('o2oWechatIou')
     if (!$rootScope.openid || $rootScope.openid === null || $rootScope.openid === undefined) {
       var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
       // 获取微信code
-      $rootScope.wechatCodeStr = location.search.split('code=')[1];
+      $rootScope.wechatCodeStr = window.location.href.split('code=')[1];
       if ($rootScope.wechatCodeStr) {
         $rootScope.wechatCode = $rootScope.wechatCodeStr.split('&state')[0];
         if ($rootScope.wechatCode) {
           checkModel.$find($rootScope.wechatCode + '/openid').$then(function(response){
             $rootScope.openid = response.openid;
             $rootScope.userInfo = response;
-            if (!response.mobile) {
-              $state.go('register');
+            if ($rootScope.openid && !response.mobile) {
+              $state.go('register',{'openid': $rootScope.openid});
+            } else if ($rootScope.openid && response.mobile) {
+              IouUser.$find($rootScope.userInfo.id + '/account').$then(function(response) {
+                if (response.$status === 'ok') {
+                  // 获取用户金额信息
+                  $scope.userAccount = response;
+                } else {
+                  // 获取信息失败。
+                }
+              });
             }
           });
         }
       }
     }
 
-    //获取账户信息
-    // if ($rootScope.userInfo) {
-      // HongcaiUser.$find($rootScope.userInfo.id + '/account').$then(function(response) {
-      IouUser.$find('24/account').$then(function(response) {
-        if (response.$status === 'ok') {
-          // 获取用户金额信息
-          $scope.userAccount = response;
-        } else {
-          // 获取信息失败。
-        }
-      });
-    // }
+
     
 
 
