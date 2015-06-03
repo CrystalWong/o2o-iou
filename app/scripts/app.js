@@ -118,8 +118,6 @@ o2oWechatIou
           }
         }
       })
-      
-     
       // 常见问题
       .state('root.faq', {
         url: '/faq',
