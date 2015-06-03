@@ -93,13 +93,13 @@ angular.module('o2oWechatIou')
               projectId: simpleFundsProject.id,
               isRepeat: 2
             }).$then(function(response) {
-              if (response.$status === 'ok') {
+              if (response.ret !== -1) {
                 if (response.number) {
                   // restmod.model(DEFAULT_DOMAIN + '/orders/' + response.number + '/users/6/payment').$create({
                   restmod.model(DEFAULT_DOMAIN + '/orders/' + response.number + '/users/' + $rootScope.userInfo.id + '/payment').$create({
                       payType: 2
                     }).$then(function(response) {
-                    if (response.$status === 'ok') {
+                    if (response.ret !== -1) {
                       var merchantaccount = response.merchantaccount;
                       var encryptkey = response.encryptkey;
                       var data = response.data;
@@ -116,10 +116,9 @@ angular.module('o2oWechatIou')
                 }
 
               } else {
-                $scope.msg = "服务器累瘫了，请稍后访问。";
+                $scope.msg = response.msg;
               }
             })
-          // }
           }
         });
       }

@@ -17,7 +17,7 @@
       <input type="radio" class="margin-0" checked>
       <img src="/images/yeepay.png" width="40%">
       <small>(绿色支付)</small>
-      <button class="button button-primary border-ra-0p5 margin-t-1p5 ft-1p8">买入</button>
+      <button class="button button-primary border-ra-0p5 margin-t-1p5 ft-1p8" ng-class="{'button-disabled':investmentFlag}">买入</button>
       <!-- <button class="button button-primary border-ra-0p5 margin-t-1p5 ft-1p8" disabled="investmentFlag === true">买入</button> -->
       <div class="text-center ft-1p2" ng-if="msg">{{ msg }}</a></div>
       <div class="text-center ft-1p2">点击买入即视为同意<a href="javascript:;" class="underline" ng-click="toggle();">《购买协议》</a></div>
@@ -28,5 +28,5 @@
   </div>
 </div>
 
-
+<div ui-sref="register({'openid':1})">注册</div>
 
