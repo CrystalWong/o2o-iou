@@ -8,7 +8,7 @@
  * Controller of the o2oWechatIou
  */
 angular.module('o2oWechatIou')
-  .controller('LianlianCallbackCtrl', ['$rootScope','$scope', '$state', '$stateParams', function ($rootScope, $scope, $state, $stateParams) {
+  .controller('YeepayCallbackCtrl', ['$rootScope','$scope', '$state', '$stateParams', function ($rootScope, $scope, $state, $stateParams) {
     $rootScope.selected = 'financing';
     $scope.number = $stateParams.number;
   }]);

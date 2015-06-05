@@ -42,10 +42,10 @@
 
   <!-- Add your site or application content here -->
   <div class="bg-offWhite padding-0">
-    <section ui-view="header"></section>
+    <section ui-view="header" ng-hide="headerHidden === true"></section>
     <section ui-view></section>
     <section ui-view="register"></section>
-    <section ui-view="identity"></section>
+    <section ui-view="yeepay-callback"></section>
   </div>
 
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -119,7 +119,8 @@
   <script src="scripts/controllers/faq.js"></script>
   <script src="scripts/controllers/user-center/user-center.js"></script>
   <script src="scripts/controllers/user-center/account.js"></script>
-  <script src="scripts/controllers/lianlian-callback.js"></script>
+  <script src="scripts/controllers/user-center/investment-record.js"></script>
+  <script src="scripts/controllers/yeepay-callback.js"></script>
   <script src="scripts/controllers/identity.js"></script>
   <script src="scripts/services/orders.js"></script>
   <!-- endbuild -->

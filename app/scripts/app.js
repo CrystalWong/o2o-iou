@@ -69,17 +69,17 @@ o2oWechatIou
           }
         }
       })
-      /*.state('identity', {
-        url: '/identity/:number',
+      .state('yeepay-callback', {
+        url: '/yeepay-callback/:number',
         views: {
-          'identity': {
-            templateUrl: 'views/identity.html',
-            controller: 'IdentityCtrl',
-            controllerUrl: 'scripts/controllers/identity'
+          'yeepay-callback': {
+            templateUrl: 'views/yeepay-callback.html',
+            controller: 'YeepayCallbackCtrl',
+            controllerUrl: 'scripts/controllers/yeepay-callback'
           }
         }
-      })*/
-      .state('root.lianlian-callback', {
+      })
+      /*.state('root.lianlian-callback', {
         url: '/lianlian-callback/:number',
         views: {
           '': {
@@ -88,7 +88,7 @@ o2oWechatIou
             controllerUrl: 'scripts/controllers/lianlian-callback'
           }
         }
-      })
+      })*/
       /*.state('root.registration-agreement', {
         url: '/registration-agreement',
         views: {
@@ -115,6 +115,16 @@ o2oWechatIou
             templateUrl: 'views/user-center/account.html',
             controller: 'AccountCtrl',
             controllerUrl: 'scripts/controllers/user-center/account'
+          }
+        }
+      })
+      .state('root.user-center.investment-record', {
+        url: '/investment-record',
+        views: {
+          '': {
+            templateUrl: 'views/user-center/investment-record.html',
+            controller: 'InvestmentRecordCtrl',
+            controllerUrl: 'scripts/controllers/user-center/investment-record'
           }
         }
       })
