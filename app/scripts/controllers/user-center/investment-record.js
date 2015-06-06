@@ -8,8 +8,7 @@
  * Controller of the o2oWechatIou
  */
 angular.module('o2oWechatIou')
-  .controller('AccountCtrl', ['$scope', '$rootScope', '$state', 'IouUser', 'restmod', 'DEFAULT_DOMAIN', function ($scope, $rootScope, $state, IouUser, restmod, DEFAULT_DOMAIN) {
-    $rootScope.selected =  'account';
+  .controller('InvestmentRecordCtrl', ['$scope', '$rootScope', '$state', 'IouUser', 'restmod', 'DEFAULT_DOMAIN', function ($scope, $rootScope, $state, IouUser, restmod, DEFAULT_DOMAIN) {
 
     //检测用户是否已注册
     if (!$rootScope.openid || $rootScope.openid === null || $rootScope.openid === undefined) {
@@ -38,11 +37,5 @@ angular.module('o2oWechatIou')
         }
       }
     }
-
-
-    
-
-
-
 
   }]);

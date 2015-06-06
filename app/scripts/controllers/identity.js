@@ -35,14 +35,17 @@ angular.module('o2oWechatIou')
 
     $scope.toPay = function(user) {
       restmod.model(DEFAULT_DOMAIN + '/orders/' + $stateParams.number + '/users/' + $rootScope.userInfo.id + '/payment').$create({
-          realName: user.realName,
-          idNo: user.idNo
+          payType: 2
         }).$then(function(response) {
         if (response.$status === 'ok') {
-          var req_data = response.req_data;
+          var merchantaccount = response.merchantaccount;
+          var encryptkey = response.encryptkey;
+          var data = response.data;
           var _f = newForm(); //创建一个form表单
-          createElements(_f, 'req_data', req_data); //创建form中的input对象
-          _f.action = 'https://yintong.com.cn/llpayh5/authpay.htm'; //form提交地址
+          createElements(_f, 'merchantaccount', merchantaccount); //创建form中的input对象
+          createElements(_f, 'encryptkey', encryptkey); //创建form中的input对象
+          createElements(_f, 'data', data); //创建form中的input对象
+          _f.action = 'https://ok.yeepay.com/paymobile/api/pay/request'; //form提交地址
           _f.submit(); //提交
         } else {
           $scope.msg = response.msg;

@@ -20,12 +20,12 @@ var o2oWechatIou = angular.module('o2oWechatIou', [
 ]);
 
 o2oWechatIou
-  .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', '$uiViewScrollProvider', function($stateProvider, $urlRouterProvider, $httpProvider, $uiViewScrollProvider) {
+  .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', '$uiViewScrollProvider', function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $uiViewScrollProvider) {
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/json';
     $uiViewScrollProvider.useAnchorScroll();
     $stateProvider
       .state('register', {
-        url: '/register',
+        url: '/register/:openid',
         views: {
           'register': {
             templateUrl: 'views/register.html',
@@ -48,8 +48,8 @@ o2oWechatIou
         }
       })
       // 打白条
-      .state('root.main', {
-        url: '/',
+      .state('root.iou', {
+        url: '/iou',
         views: {
           '': {
             templateUrl: 'views/main.html',
@@ -59,8 +59,8 @@ o2oWechatIou
         }
       })
       // 去赚钱
-      .state('root.make-profit', {
-        url: 'make-profit',
+      .state('root.main', {
+        url: '/',
         views: {
           '': {
             templateUrl: 'views/make-profit.html',
@@ -69,17 +69,17 @@ o2oWechatIou
           }
         }
       })
-      .state('identity', {
-        url: '/identity/:number',
+      .state('yeepay-callback', {
+        url: '/yeepay-callback/:number',
         views: {
-          'identity': {
-            templateUrl: 'views/identity.html',
-            controller: 'IdentityCtrl',
-            controllerUrl: 'scripts/controllers/identity'
+          'yeepay-callback': {
+            templateUrl: 'views/yeepay-callback.html',
+            controller: 'YeepayCallbackCtrl',
+            controllerUrl: 'scripts/controllers/yeepay-callback'
           }
         }
       })
-      .state('root.lianlian-callback', {
+      /*.state('root.lianlian-callback', {
         url: '/lianlian-callback/:number',
         views: {
           '': {
@@ -88,7 +88,7 @@ o2oWechatIou
             controllerUrl: 'scripts/controllers/lianlian-callback'
           }
         }
-      })
+      })*/
       /*.state('root.registration-agreement', {
         url: '/registration-agreement',
         views: {
@@ -118,8 +118,16 @@ o2oWechatIou
           }
         }
       })
-      
-     
+      .state('root.user-center.investment-record', {
+        url: '/investment-record',
+        views: {
+          '': {
+            templateUrl: 'views/user-center/investment-record.html',
+            controller: 'InvestmentRecordCtrl',
+            controllerUrl: 'scripts/controllers/user-center/investment-record'
+          }
+        }
+      })
       // 常见问题
       .state('root.faq', {
         url: '/faq',
@@ -130,7 +138,7 @@ o2oWechatIou
             controllerUrl: 'scripts/controllers/faq'
           }
         }
-      })
+      });
       // 关于我们
       /*.state('root.about', {
         url: '/about',
@@ -143,7 +151,12 @@ o2oWechatIou
           }
         }
       });*/
+
+    // 导致IE8不兼容的地方。
     $urlRouterProvider.otherwise('/');
+    $locationProvider.html5Mode(true);
+    $locationProvider.hashPrefix('!');
+    $urlRouterProvider.when('', '/');
 
 }])
   .run(function($rootScope, $stateParams, DEFAULT_DOMAIN, $state, $location, $http, restmod) {
@@ -152,25 +165,19 @@ o2oWechatIou
     ];
     var titleMap = {'issue': '常见问题', 'about': '帮助中心', 'safe': '安全保障', 'account': '账户总览'};
     $rootScope.$on('$stateChangeStart', function() {
-      // $rootScope.showTitle = titleMap[path];
-      // TODO 多次请求？
-     /* if (!$rootScope.openid || $rootScope.openid === null || $rootScope.openid === undefined) {
-        var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
-        // 获取微信code
-        $rootScope.wechatCodeStr = location.search.split('code=')[1];
-        if ($rootScope.wechatCodeStr) {
-          $rootScope.wechatCode = $rootScope.wechatCodeStr.split('&state')[0];
-          if ($rootScope.wechatCode) {
-            checkModel.$find($rootScope.wechatCode + '/openid').$then(function(response){
-              $rootScope.openid = response.openid;
-              $rootScope.userInfo = response;
-              if (!response.mobile) {
-                $state.go('register');
-              }
-            });
-          }
+/*      var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
+      checkModel.$find('checkSession').$then(function(response) {
+        if (response.user) {
+          $rootScope.isLogged = true;
+          $rootScope.openid = response.openid;
+          $rootScope.userInfo = response;
+          //用户未登录状态
+        } else if(response.ret === -1) {
+          $rootScope.isLogged = false;
+          $rootScope.userInfo = null;
+          $rootScope.openid = null;
         }
-      }*/
+      });*/
       
     });
     $rootScope.$on('$stateChangeSuccess', function() {

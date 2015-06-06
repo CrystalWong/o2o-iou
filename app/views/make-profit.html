@@ -15,15 +15,15 @@
       <label>支付方式</label>
       <hr class="border-dotted-top margin-0 margin-b-1p5">
       <input type="radio" class="margin-0" checked>
-      <img src="/images/lianlianpay.png" width="40%">
-      <small>(手机支付，WEB支付)</small>
-      <button class="button button-primary border-ra-0p5 margin-t-1p5 ft-1p8">买入</button>
+      <img src="/images/yeepay.png" width="40%">
+      <small>(绿色支付)</small>
+      <button class="button button-primary border-ra-0p5 margin-t-1p5 ft-1p8" ng-class="{'button-disabled':investmentFlag || !simpleFundsProject.investAmount}" >买入</button>
+      <!-- <button class="button button-primary border-ra-0p5 margin-t-1p5 ft-1p8" disabled="investmentFlag === true">买入</button> -->
       <div class="text-center ft-1p2" ng-if="msg">{{ msg }}</a></div>
       <div class="text-center ft-1p2">点击买入即视为同意<a href="javascript:;" class="underline">《购买协议》</a></div>
     </div>
     <div class="margin-t-2p5 text-center ft-1p2"><a class="ft-grey1" ui-sref="root.faq">常见问题</a></div>
   </form> 
+  <div class="alert-agreement" ng-show="showFundsAgreement" ng-include src="'views/_funds-agreement.html'">
+  </div>
 </div>
-
-
-

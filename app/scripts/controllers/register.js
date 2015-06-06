@@ -9,14 +9,8 @@
  */
 angular.module('o2oWechatIou')
   .controller('RegisterCtrl', ['$rootScope', '$scope', '$state', '$stateParams', 'md5', 'register', 'wechat', 'mobileCaptcha', 'config', function($rootScope, $scope, $state, $stateParams, md5, register, wechat, mobileCaptcha, config) {
-    $scope.showRegistrationAgreement = false;
-    $scope.toggle = function () {
-      $scope.showRegistrationAgreement = !$scope.showRegistrationAgreement;
-    };
 
-    $scope.signUpButton = false;
     $scope.signUp = function(user) {
-      $scope.signUpButton = true;
       register.$create({
         mobile: user.mobile,
         captcha: user.captcha,
