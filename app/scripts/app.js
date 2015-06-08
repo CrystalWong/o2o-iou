@@ -79,24 +79,6 @@ o2oWechatIou
           }
         }
       })
-      /*.state('root.lianlian-callback', {
-        url: '/lianlian-callback/:number',
-        views: {
-          '': {
-            templateUrl: 'views/lianlian-callback.html',
-            controller: 'LianlianCallbackCtrl',
-            controllerUrl: 'scripts/controllers/lianlian-callback'
-          }
-        }
-      })*/
-      /*.state('root.registration-agreement', {
-        url: '/registration-agreement',
-        views: {
-          '': {
-            templateUrl: 'views/registration-agreement.html'
-          }
-        }
-      })*/
       // 个人中心
       .state('root.user-center', {
         abstract: true,
@@ -118,7 +100,7 @@ o2oWechatIou
           }
         }
       })
-      .state('root.user-center.investment-record', {
+      .state('investment-record', {
         url: '/investment-record',
         views: {
           '': {
@@ -129,7 +111,7 @@ o2oWechatIou
         }
       })
       // 常见问题
-      .state('root.faq', {
+      .state('faq', {
         url: '/faq',
         views: {
           '': {
