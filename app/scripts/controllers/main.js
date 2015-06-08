@@ -8,7 +8,7 @@
  * Controller of the o2oWechatIou
  */
 angular.module('o2oWechatIou')
-  .controller('MainCtrl', ['$scope', '$state', '$rootScope', '$stateParams', 'fundsProjects', 'restmod', 'DEFAULT_DOMAIN', 'config', function($scope, $state, $rootScope, $stateParams, fundsProjects, restmod, DEFAULT_DOMAIN, config) {
+  .controller('MainCtrl', ['$scope', '$state', '$rootScope', '$stateParams', 'restmod', 'DEFAULT_DOMAIN', 'config', function($scope, $state, $rootScope, $stateParams, restmod, DEFAULT_DOMAIN, config) {
     $rootScope.selected = 'iou';
     if (!$rootScope.openid || $rootScope.openid === null || $rootScope.openid === undefined) {
       var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
