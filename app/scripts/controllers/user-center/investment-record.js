@@ -25,7 +25,7 @@ angular.module('o2oWechatIou')
               $state.go('register',{'openid': $rootScope.openid});
             } else if ($rootScope.openid && response.mobile) {*/
               // IouUser.$find($rootScope.userInfo.id + '/account').$then(function(response) {
-              IouUser.$find('6/account').$then(function(response) {
+              IouUser.$find($rootScope.userInfo.id + '/account').$then(function(response) {
                 if (response.$status === 'ok') {
                   // 获取用户购买记录列表
                   $scope.account = response;
