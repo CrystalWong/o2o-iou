@@ -150,7 +150,7 @@ o2oWechatIou
     $rootScope.config = config;
     var titleMap = {'issue': '常见问题', 'about': '帮助中心', 'safe': '安全保障', 'account': '账户总览'};
     $rootScope.$on('$stateChangeStart', function() {
-      var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
+      /*var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
       checkModel.$find('checkSession').$then(function(response) {
         if (response.user) {
           // $rootScope.isLogged = true;
@@ -162,7 +162,7 @@ o2oWechatIou
           $rootScope.userInfo = null;
           $rootScope.openid = null;
         }
-      });
+      });*/
         
     });
     $rootScope.$on('$stateChangeSuccess', function() {
