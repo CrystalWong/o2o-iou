@@ -154,19 +154,19 @@ o2oWechatIou
     ];
     var titleMap = {'issue': '常见问题', 'about': '帮助中心', 'safe': '安全保障', 'account': '账户总览'};
     $rootScope.$on('$stateChangeStart', function() {
-/*      var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
+      var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
       checkModel.$find('checkSession').$then(function(response) {
         if (response.user) {
-          $rootScope.isLogged = true;
+          // $rootScope.isLogged = true;
           $rootScope.openid = response.openid;
           $rootScope.userInfo = response;
           //用户未登录状态
         } else if(response.ret === -1) {
-          $rootScope.isLogged = false;
+          // $rootScope.isLogged = false;
           $rootScope.userInfo = null;
           $rootScope.openid = null;
         }
-      });*/
+      });
         
     });
     $rootScope.$on('$stateChangeSuccess', function() {
