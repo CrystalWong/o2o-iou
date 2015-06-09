@@ -79,24 +79,6 @@ o2oWechatIou
           }
         }
       })
-      /*.state('root.lianlian-callback', {
-        url: '/lianlian-callback/:number',
-        views: {
-          '': {
-            templateUrl: 'views/lianlian-callback.html',
-            controller: 'LianlianCallbackCtrl',
-            controllerUrl: 'scripts/controllers/lianlian-callback'
-          }
-        }
-      })*/
-      /*.state('root.registration-agreement', {
-        url: '/registration-agreement',
-        views: {
-          '': {
-            templateUrl: 'views/registration-agreement.html'
-          }
-        }
-      })*/
       // 个人中心
       .state('root.user-center', {
         abstract: true,
@@ -118,7 +100,7 @@ o2oWechatIou
           }
         }
       })
-      .state('root.user-center.investment-record', {
+      .state('investment-record', {
         url: '/investment-record',
         views: {
           '': {
@@ -128,8 +110,18 @@ o2oWechatIou
           }
         }
       })
+      .state('consume-record', {
+        url: '/consume-record',
+        views: {
+          '': {
+            templateUrl: 'views/user-center/consume-record.html',
+            controller: 'ConsumeRecordCtrl',
+            controllerUrl: 'scripts/controllers/user-center/consume-record'
+          }
+        }
+      })
       // 常见问题
-      .state('root.faq', {
+      .state('faq', {
         url: '/faq',
         views: {
           '': {
@@ -138,19 +130,16 @@ o2oWechatIou
             controllerUrl: 'scripts/controllers/faq'
           }
         }
-      });
+      })
       // 关于我们
-      /*.state('root.about', {
+      .state('about', {
         url: '/about',
         views: {
           '': {
-            templateUrl: 'views/about.html',
-            controller: 'AboutCtrl',
-            controllerUrl: 'scripts/controllers/about'
-
+            templateUrl: 'views/about.html'
           }
         }
-      });*/
+      });
 
     // 导致IE8不兼容的地方。
     $urlRouterProvider.otherwise('/');
@@ -165,20 +154,20 @@ o2oWechatIou
     ];
     var titleMap = {'issue': '常见问题', 'about': '帮助中心', 'safe': '安全保障', 'account': '账户总览'};
     $rootScope.$on('$stateChangeStart', function() {
-/*      var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
+      var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
       checkModel.$find('checkSession').$then(function(response) {
         if (response.user) {
-          $rootScope.isLogged = true;
+          // $rootScope.isLogged = true;
           $rootScope.openid = response.openid;
           $rootScope.userInfo = response;
           //用户未登录状态
         } else if(response.ret === -1) {
-          $rootScope.isLogged = false;
+          // $rootScope.isLogged = false;
           $rootScope.userInfo = null;
           $rootScope.openid = null;
         }
-      });*/
-      
+      });
+        
     });
     $rootScope.$on('$stateChangeSuccess', function() {
       var path = $location.path().split('/')[1];

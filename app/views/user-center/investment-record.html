@@ -1,38 +1,38 @@
-<!-- 购买记录 -->
-<div class="account-userInfo bg-white">
-  <div class="padding-l-2 padding-r-2 padding-t-1 padding-b-1">
-    <div class="border-white margin-0 text-center ft-white account-stat overflow-hid padding-2 padding-3">
-      <div class="u-pull-left padding-t-1">
-        <span class="padding-t-0p5 padding-b-0p5 padding-l-1 padding-r-1 border-ra-20 bg-blue1">可用白条</span>
+<div class="investment-record bg-white">
+  <div class="padding-1 overflow-hid">
+    <p class="ft-1p8 margin-0">
+      <span class="u-pull-left">购买记录</span>
+      <a class="u-pull-right ft-1p2 margin-t-0p5 ft-grey2 underline" href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb0a7af1f7ab4d74a&amp;redirect_uri=http%3A%2F%2Fdbt.hongcai.com%2Fuser-center%2Faccount&amp;response_type=code&amp;scope=snsapi_base&amp;state=123#wechat_redirect">&lt;返回我的账户</a>
+    </p>
+  </div>
+  <hr class="margin-0 border-dotted-top clear">
+  <!-- 有购买记录 -->
+  <div ng-if="creditsList.length">
+    <div class="padding-t-2 padding-b-2 padding-l-1 padding-r-1 record-bg">
+      白条利息(元)：<br><strong class="ft-white ft-2">{{ account.receivedProfit + account.waitingProfit || 0 | number: 2}}</strong>
+    </div>
+    <div class="margin-t-1 padding-l-1 padding-r-1 padding-t-2 padding-b-2 overflow-hid border-grey" ng-repeat="item in creditsList">
+      <div class="u-pull-left">
+        <span>{{ item.amount || 0 | number: 2 }}元</span>&nbsp;<span class="status ft-white ft-1p2 border-ra-0p5" ng-class="{ 'bg-grey': item.status === 3,'bg-green': item.status !== 3 }">赚钱的白条</span>
         <br>
-        <span class="ft-blue"><strong class="ft-1p8">{{userAccount.availableQuota || 0 | number: 2 }}</strong><small>元</small></span>
+        <small class="ft-grey2">{{ item.createTime | amDateFormat:'YYYY-MM-DD' }} 购买</small>
       </div>
-      <div class="u-pull-right padding-t-1">
-        <span class="padding-t-0p5 padding-b-0p5 padding-l-1 padding-r-1 border-ra-20 bg-grey">已消费</span>
+      <div class="u-pull-right">
+        <span class="ft-blue">{{ item.profit || 0 | number: 2 }}元</span>&nbsp;<span class="status ft-white ft-1p2 border-ra-0p5" ng-class="{ 'bg-grey': item.status === 3,'bg-green': item.status !== 3 }">利息</span>
         <br>
-        <span class="ft-grey1"><strong class="ft-1p8">{{userAccount.consumptionQuota || 0 | number: 2 }}</strong><small>元</small></span>
+        <small class="ft-grey2">{{ item.repaymentDate | amDateFormat:'YYYY-MM-DD' }} 到期</small>
       </div>
     </div>
-    <div class="text-center ft-1p4">
-      <i class="fa fa-check-square ft-green">&nbsp;</i>白条为您节省：<strong>{{ userAccount.discountAmount || 0 | number: 2}}</strong>元，还白白多赚了三个月的利息
+    <div class="text-center padding-t-2">
+      <input type="button" class="button button-primary" ng-click="loadDealMore();" value="加载更多...">
     </div>
   </div>
-  <hr class="border-width margin-0 margin-b-2">
+  <!-- 无购买记录 -->
+  <div class="margin-t-2 padding-2 text-center" ng-if="!creditsList.length">
+    <div class="border-grey border-width border-ra-50 text-center bg-circle">
+      <i class="fa fa-list-ul ft-7 ft-grey2">&nbsp;</i>
+    </div>
+    <p class="margin-t-2">您尚未购买过白条理财，因此没有理财记录哦~</p>
+  </div>
 
-  <!-- 细分页面入口 -->
-  <div class="overflow-hid padding-t-2 padding-b-2">
-    <a class="column border-grey padding-l-2 padding-r-2 padding-t-0p5 padding-b-0p5" href="javascript:;">
-      <span class="u-pull-left ft-grey"><i class="fa fa-list-ul ft-blue ft-1p8">&nbsp;&nbsp;</i>购买记录</span>
-      <span class="u-pull-right"><small class="ft-grey1"></small><i class="fa fa-chevron-right ft-grey2"></i></span>
-    </a>
-    <a class="column border-grey border-top-none padding-l-2 padding-r-2 padding-t-0p5 padding-b-0p5 margin-0" href="javascript:;">
-      <span class="u-pull-left ft-grey"><i class="fa fa-credit-card  ft-blue ft-1p8">&nbsp;&nbsp;</i>消费记录</span>
-      <span class="u-pull-right"><small class="ft-grey1">开发中……&nbsp;</small><i class="fa fa-chevron-right ft-grey2"></i></span>
-    </a>
-    <a class="column border-grey border-top-none padding-l-2 padding-r-2 padding-t-0p5 padding-b-0p5 margin-0" href="javascript:;">
-      <span class="u-pull-left ft-grey"><i class="fa fa-users ft-blue ft-1p8">&nbsp;&nbsp;</i>关于我们</span>
-      <span class="u-pull-right"><small class="ft-grey1">开发中……&nbsp;</small><i class="fa fa-chevron-right ft-grey2"></i></span>
-    </a>
-  </div>
 </div>
-

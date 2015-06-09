@@ -1,41 +1,50 @@
-.user-center {
-  .account-userInfo {
-    .border-width {
-      border-width: 0.3rem;
+.account-userInfo {
+  .border-width {
+    border-width: 0.3rem;
+  }
+  .account-stat {
+    background-image: url(/images/account.png);
+    background-size: 100% 100%; 
+  }
+}
+.investment-record {
+  .status {
+    display: inline-block;
+    padding: 0 0.5rem;
+  }
+  .bg-circle {
+    width: 12rem;
+    height: 12rem;
+    padding: 3rem;
+    margin: 0 auto;
+  }
+  .record-bg {
+    background: url(/images/record-bg.png) repeat-x;
+    background-size: 4.5% 100%; 
+  } 
+} 
+
+.user-consume{
+    .status{
+      background-image: url(/images/consume.png);
+      background-position: center center;
+      background-repeat: no-repeat; 
+      background-size: 3% 80%;
     }
-    .account-stat {
-      background-image: url(/images/account.png);
+    .consume-paid{
+      background-image: url(/images/consume-paid.png);
+       background-position: right top;
+      background-size: 100% 100%;
+    }
+    .consume-no-paid{
+      background-image: url(/images/consume-no-pay.png);
       background-size: 100% 100%; 
     }
-  }
-  .credit {
-    li.active {
-      border-top: 0.2rem solid #6da9f3;
-      color: #6da9f3;
-      background-color: #fff;
+    .consume-status-icon{
+      top: 0;
+      right: 0;
     }
-    .tab-content.active {
-      display: block;
+    .consume-status-icon img{
+      width: 60%;
     }
-    .credit-item-info {
-      width: 1/3*100%;
-    }
-  }
-  .deal {
-    table {
-      th,td {
-        font-size: 1rem;
-        padding: 0;
-        text-align: center;
-        border: 0.1rem solid #ddd;
-      }
-    }
-  }
-  .order {
-    .close-hint {
-      right: 1rem;
-      font-size: 1.6rem;
-      opacity: 0.5;
-    }
-  }
-} 
+}
