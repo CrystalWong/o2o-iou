@@ -23,7 +23,7 @@ angular.module('o2oWechatIou')
             if ($rootScope.openid && !response.mobile) {
               $state.go('register',{'openid': $rootScope.openid});
             } else if ($rootScope.openid && response.mobile) {
-              window.location.href = 'http://api.rexingo.com/index.php/api/index/blankNote?userid=' + $rootScope.userInfo.id + '&mobile='+ $rootScope.userInfo.mobile;
+              window.location.href = config.rexin + 'userid=' + $rootScope.userInfo.id + '&mobile='+ $rootScope.userInfo.mobile;
             }
             
           });

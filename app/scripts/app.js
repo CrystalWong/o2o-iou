@@ -41,9 +41,7 @@ o2oWechatIou
             templateUrl: 'views/root.html'
           },
           'header': {
-            templateUrl: 'views/_header.html',
-            controller: 'HeaderCtrl',
-            controllerUrl: 'scripts/controller/header-ctrl'
+            templateUrl: 'views/_header.html'
           }
         }
       })
@@ -148,13 +146,11 @@ o2oWechatIou
     $urlRouterProvider.when('', '/');
 
 }])
-  .run(function($rootScope, $stateParams, DEFAULT_DOMAIN, $state, $location, $http, restmod) {
-    var routespermission = [
-      '/user-center'
-    ];
+  .run(function($rootScope, $stateParams, DEFAULT_DOMAIN, $state, $location, $http, restmod, config) {
+    $rootScope.config = config;
     var titleMap = {'issue': '常见问题', 'about': '帮助中心', 'safe': '安全保障', 'account': '账户总览'};
     $rootScope.$on('$stateChangeStart', function() {
-      var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
+      /*var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
       checkModel.$find('checkSession').$then(function(response) {
         if (response.user) {
           // $rootScope.isLogged = true;
@@ -166,7 +162,7 @@ o2oWechatIou
           $rootScope.userInfo = null;
           $rootScope.openid = null;
         }
-      });
+      });*/
         
     });
     $rootScope.$on('$stateChangeSuccess', function() {

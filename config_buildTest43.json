@@ -1,3 +1,7 @@
 {
-   "weixin_redirect": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb0a7af1f7ab4d74a&redirect_uri=http%3A%2F%2Fweixin-activity.tunnel.mobi%2F&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect"
+  "weixin_redirect": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx02dfe579709d2d95&redirect_uri=http%3A%2F%2Fdbt.test321.hongcai.com%2F&response_type=code&scope=snsapi_base&state=123#wechat_redirect",
+  "consume": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx02dfe579709d2d95&redirect_uri=http%3A%2F%2Fdbt.test321.hongcai.com%2Fiou&response_type=code&scope=snsapi_base&state=123#wechat_redirect",
+  "recharge": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx02dfe579709d2d95&redirect_uri=http%3A%2F%2Fdbt.test321.hongcai.com%2F&response_type=code&scope=snsapi_base&state=123#wechat_redirect",
+  "account": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx02dfe579709d2d95&redirect_uri=http%3A%2F%2Fdbt.test321.hongcai.com%2Fuser-center%2Faccount&response_type=code&scope=snsapi_base&state=123#wechat_redirect",
+  "rexin": "http://apitest.rexingo.com/index.php/api/index/blankNote?"
 }
