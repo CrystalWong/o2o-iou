@@ -32,15 +32,30 @@ angular.module('o2oWechatIou')
                 } else {
                   $scope.msg = '获取购买信息失败';
                 }
-              });              
-              IouUser.$find('6/credits').$then(function(response) {
-                if (response.$status === 'ok') {
-                  // 获取用户购买记录列表
-                  $scope.creditsList = response.data;
-                } else {
-                  $scope.msg = '获取购买信息失败';
-                }
-              });
+              });   
+              $scope.page = 1;
+              $scope.pageSize = 10;
+              $scope.getDeals = function () {
+                IouUser.$find('6/credits', {
+                  page: $scope.page,
+                  pageSize: $scope.pageSize
+                }).$then(function(response) {
+                  if (response.$status === 'ok') {
+                    // 获取用户购买记录列表
+                    $scope.creditsList = response.data;
+                  } else {
+                    $scope.msg = '获取购买信息失败';
+                  }
+                });
+              }
+
+              $scope.getDeals();           
+
+              // 加载更多购买记录
+              $scope.loadDealMore = function() {
+                $scope.pageSize = $scope.pageSize + 10;
+                $scope.getDeals();
+              };
             /*}
           });
         }
