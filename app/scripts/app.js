@@ -130,19 +130,16 @@ o2oWechatIou
             controllerUrl: 'scripts/controllers/faq'
           }
         }
-      });
+      })
       // 关于我们
-      /*.state('root.about', {
+      .state('about', {
         url: '/about',
         views: {
           '': {
-            templateUrl: 'views/about.html',
-            controller: 'AboutCtrl',
-            controllerUrl: 'scripts/controllers/about'
-
+            templateUrl: 'views/about.html'
           }
         }
-      });*/
+      });
 
     // 导致IE8不兼容的地方。
     $urlRouterProvider.otherwise('/');

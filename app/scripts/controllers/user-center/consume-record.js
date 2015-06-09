@@ -27,13 +27,12 @@ angular.module('o2oWechatIou')
               IouUser.$find($rootScope.userInfo.id + '/consumptions').$then(function(response) {
                 if (response.$status === 'ok') {
                   // 获取用户金额信息
-                  // $scope.userAccount = response;
                   $scope.userConsume = response;
                 } else {
                   // 获取信息失败。
                 }
               });
-              IouUser.$find('11/account').$then(function(response) {
+              IouUser.$find($rootScope.userInfo.id +'/account').$then(function(response) {
                 if (response.$status === 'ok') {
                   // 获取用户金额信息
                   $scope.userAccount = response;
@@ -49,23 +48,23 @@ angular.module('o2oWechatIou')
 
 
     // test
-    // IouUser.$find('11/consumptions').$then(function(response) {
-    //             if (response.$status === 'ok') {
-    //               // 获取用户金额信息
-    //               // $scope.userAccount = response;
-    //               $scope.userConsume = response;
-    //             } else {
-    //               // 获取信息失败。
-    //             }
-    //           });
-    //     IouUser.$find('11/account').$then(function(response) {
-    //             if (response.$status === 'ok') {
-    //               // 获取用户金额信息
-    //               // $scope.userAccount = response;
-    //               $scope.userAccount = response;
-    //             } else {
-    //               // 获取信息失败。
-    //             }
-    //           });
+   //  IouUser.$find($rootScope.userInfo.id +'/consumptions').$then(function(response) {
+	  //   if (response.$status === 'ok') {
+	  //     // 获取用户金额信息
+	  //     // $scope.userAccount = response;
+	  //     $scope.userConsume = response;
+	  //   } else {
+	  //     // 获取信息失败。
+	  //   }
+	  // });
+   //  IouUser.$find($rootScope.userInfo.id +'/account').$then(function(response) {
+   //      if (response.$status === 'ok') {
+   //        // 获取用户金额信息
+   //        // $scope.userAccount = response;
+   //        $scope.userAccount = response;
+   //      } else {
+   //        // 获取信息失败。
+   //      }
+   //    });
 
   }]);
