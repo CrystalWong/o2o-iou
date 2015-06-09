@@ -1,11 +1,13 @@
 'use strict';
 angular.module('o2oWechatIou')
-  .controller('HeaderCtrl', ['$scope', '$location', '$state', '$rootScope', '$stateParams', 'restmod', 'DEFAULT_DOMAIN', function($scope, $location, $state, $rootScope, $stateParams, restmod, DEFAULT_DOMAIN) {
+  .controller('HeaderCtrl', ['$scope', '$location', '$state', '$rootScope', '$stateParams', 'restmod', 'DEFAULT_DOMAIN', 'config', function($scope, $location, $state, $rootScope, $stateParams, restmod, DEFAULT_DOMAIN, config) {
 
     $rootScope.showMe = false;
     $scope.toggle = function () {
         $rootScope.showMe = !$rootScope.showMe;
     };
+
+    $scope.config = config;
     // 退出登录功能
     $scope.toLogout = function() {
       // var
