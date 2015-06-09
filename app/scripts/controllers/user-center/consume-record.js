@@ -10,7 +10,7 @@
 angular.module('o2oWechatIou')
   .controller('ConsumeRecordCtrl', ['$scope', '$rootScope', '$state', 'IouUser', 'restmod', 'DEFAULT_DOMAIN', 'config', function ($scope, $rootScope, $state, IouUser, restmod, DEFAULT_DOMAIN, config) {
 
-  if ($rootScope.userInfo.id) {
+  if ($rootScope.userInfo) {
     IouUser.$find($rootScope.userInfo.id +'/consumptions').$then(function(response) {
 	    if (response.$status === 'ok') {
 	      // 获取用户金额信息

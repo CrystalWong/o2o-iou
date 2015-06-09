@@ -9,7 +9,7 @@
  */
 angular.module('o2oWechatIou')
   .controller('InvestmentRecordCtrl', ['$scope', '$rootScope', '$state', 'IouUser', 'restmod', 'DEFAULT_DOMAIN', 'config', function ($scope, $rootScope, $state, IouUser, restmod, DEFAULT_DOMAIN, config) {
-    if ($rootScope.userInfo.id) {
+    if ($rootScope.userInfo) {
       IouUser.$find($rootScope.userInfo.id + '/account').$then(function(response) {
         if (response.$status === 'ok') {
           // 获取用户购买记录列表
