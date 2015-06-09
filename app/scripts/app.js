@@ -110,6 +110,16 @@ o2oWechatIou
           }
         }
       })
+      .state('consume-record', {
+        url: '/consume-record',
+        views: {
+          '': {
+            templateUrl: 'views/user-center/consume-record.html',
+            controller: 'ConsumeRecordCtrl',
+            controllerUrl: 'scripts/controllers/user-center/consume-record'
+          }
+        }
+      })
       // 常见问题
       .state('faq', {
         url: '/faq',
@@ -157,7 +167,7 @@ o2oWechatIou
           $rootScope.openid = null;
         }
       });*/
-      
+        
     });
     $rootScope.$on('$stateChangeSuccess', function() {
       var path = $location.path().split('/')[1];
