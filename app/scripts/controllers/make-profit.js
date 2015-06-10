@@ -18,13 +18,13 @@ angular.module('o2oWechatIou')
 
 
     if (!$rootScope.openid || $rootScope.openid === null || $rootScope.openid === undefined) {
-      var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
+      // var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
       // 获取微信code
       $rootScope.wechatCodeStr = window.location.href.split('code=')[1];
       if ($rootScope.wechatCodeStr) {
         $rootScope.wechatCode = $rootScope.wechatCodeStr.split('&state')[0];
         if ($rootScope.wechatCode) {
-          checkModel.$find($rootScope.wechatCode + '/openid').$then(function(response){
+          IouUser.$find($rootScope.wechatCode + '/openid').$then(function(response){
             $rootScope.openid = response.openid;
             $rootScope.userInfo = response;
             if ($rootScope.openid && !response.mobile) {
@@ -79,15 +79,6 @@ angular.module('o2oWechatIou')
       e.value = eValue;
       return e;
     }
-
-    /*$scope.checkSession = function () {
-      var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
-      checkModel.$find('checkSession').$then(function(response) {
-        if (response.user) {
-          return  response.user;
-        }
-      });
-    }*/
 
     $scope.investmentFlag = false;
     $scope.toInvest = function(simpleFundsProject) {
