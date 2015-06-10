@@ -23,9 +23,11 @@
         <small class="ft-grey2">{{ item.repaymentDate | amDateFormat:'YYYY-MM-DD' }} 到期</small>
       </div>
     </div>
-    <div class="text-center padding-t-2">
-      <input type="button" class="button button-primary" ng-click="loadDealMore();" value="加载更多...">
+    <div class="padding-t-1 text-center">
+      <div class="half bg-blue1 ft-white padding-t-1 padding-b-1 position-center" ng-click="loadDealMore();">加载更多...</div>
     </div>
+    
+    
   </div>
   <!-- 无购买记录 -->
   <div class="margin-t-2 padding-2 text-center" ng-if="!creditsList.length">

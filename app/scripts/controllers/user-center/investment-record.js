@@ -48,7 +48,7 @@ angular.module('o2oWechatIou')
          
         //用户未登录状态
       } else if (!response.user) {
-        window.location.href = config.weixin_redirect;
+        // window.location.href = config.weixin_redirect;
       } else if(response.ret === -1) {
         // $rootScope.isLogged = false;
         $rootScope.userInfo = null;
