@@ -29,7 +29,17 @@ angular.module('o2oWechatIou')
             $rootScope.userInfo = response;
             if ($rootScope.openid && !response.mobile) {
               $state.go('register',{'openid': $rootScope.openid});
+            } else if ($rootScope.userInfo.id) {
+              IouUser.$find($rootScope.userInfo.id + '/account').$then(function(response) {
+                if (response.$status === 'ok') {
+                  // 获取用户金额信息
+                  $scope.userAccount = response;
+                } else {
+                  // 获取信息失败。
+                }
+              });
             }
+            
           });
         }
       }
