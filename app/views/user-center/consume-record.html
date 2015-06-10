@@ -24,6 +24,9 @@
 			<div class="consume-status-icon position-ab" ng-show="{{item.payStatus == 1}}"><img class="u-pull-right" src="/images/consume-paid.png"></div>
 			<div class="consume-status-icon position-ab" ng-show="{{item.payStatus == 0}}"><img class="u-pull-right" src="/images/consume-no-pay.png"></div>
 		</div>
+    <div class="padding-t-1 text-center">
+      <div class="half bg-blue1 ft-white padding-t-1 padding-b-1 position-center" ng-click="loadConsumeRecordMore();">加载更多...</div>
+    </div>
 	</div>
   <!-- 无消费记录 -->
   <div class="margin-t-2 padding-2 text-center" ng-if="!userConsume.data.length">
