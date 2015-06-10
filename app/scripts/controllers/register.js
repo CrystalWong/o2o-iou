@@ -19,7 +19,7 @@ angular.module('o2oWechatIou')
         if (response.ret === -1) {
           $scope.msg = response.msg;
         } else {
-          window.location.href = config.weixin_redirect;
+          window.location.href = config.wechatRedirect;
         }
       });
     };

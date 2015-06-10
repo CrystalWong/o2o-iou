@@ -77,18 +77,8 @@ o2oWechatIou
           }
         }
       })
-      // 个人中心
-      .state('root.user-center', {
-        abstract: true,
-        url: '/user-center',
-        views: {
-          'user-center': {
-            templateUrl: 'views/user-center/user-center.html'
-          }
-        }
-      })
       //我的账户
-      .state('root.user-center.account', {
+      .state('root.account', {
         url: '/account',
         views: {
           '': {
@@ -98,6 +88,7 @@ o2oWechatIou
           }
         }
       })
+      //购买记录
       .state('investment-record', {
         url: '/investment-record',
         views: {
@@ -108,6 +99,7 @@ o2oWechatIou
           }
         }
       })
+      //消费记录
       .state('consume-record', {
         url: '/consume-record',
         views: {
@@ -148,7 +140,7 @@ o2oWechatIou
 }])
   .run(function($rootScope, $stateParams, DEFAULT_DOMAIN, $state, $location, $http, restmod, config) {
     $rootScope.config = config;
-    var titleMap = {'issue': '常见问题', 'about': '帮助中心', 'safe': '安全保障', 'account': '账户总览'};
+    // var titleMap = {'issue': '常见问题', 'about': '帮助中心', 'safe': '安全保障', 'account': '账户总览'};
     $rootScope.$on('$stateChangeStart', function() {
       /*var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
       checkModel.$find('checkSession').$then(function(response) {
@@ -166,9 +158,9 @@ o2oWechatIou
         
     });
     $rootScope.$on('$stateChangeSuccess', function() {
-      var path = $location.path().split('/')[1];
+      /*var path = $location.path().split('/')[1];
       $rootScope.showPath = path;
-      $rootScope.showTitle = titleMap[path];
+      $rootScope.showTitle = titleMap[path];*/
     });
   })
 

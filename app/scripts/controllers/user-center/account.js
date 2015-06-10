@@ -8,7 +8,7 @@
  * Controller of the o2oWechatIou
  */
 angular.module('o2oWechatIou')
-  .controller('AccountCtrl', ['$scope', '$rootScope', '$state', 'IouUser', 'restmod', 'DEFAULT_DOMAIN', function ($scope, $rootScope, $state, IouUser, restmod, DEFAULT_DOMAIN) {
+  .controller('AccountCtrl', ['$scope', '$rootScope', '$state', 'IouUser', function ($scope, $rootScope, $state, IouUser) {
     $rootScope.selected =  'account';
 
     //检测用户是否已注册
