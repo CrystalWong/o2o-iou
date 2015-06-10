@@ -10,26 +10,6 @@
 angular.module('o2oWechatIou')
   .controller('InvestmentRecordCtrl', ['$scope', '$rootScope', '$state', 'IouUser', 'restmod', 'DEFAULT_DOMAIN', 'config', function ($scope, $rootScope, $state, IouUser, restmod, DEFAULT_DOMAIN, config) {
     
-    /*if (!$rootScope.openid || $rootScope.openid === null || $rootScope.openid === undefined) {
-      var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
-      // 获取微信code
-      $rootScope.wechatCodeStr = window.location.href.split('code=')[1];
-      if ($rootScope.wechatCodeStr) {
-        $rootScope.wechatCode = $rootScope.wechatCodeStr.split('&state')[0];
-        if ($rootScope.wechatCode) {
-          checkModel.$find($rootScope.wechatCode + '/openid').$then(function(response){
-            $rootScope.openid = response.openid;
-            $rootScope.userInfo = response;
-            if ($rootScope.openid && !response.mobile) {
-              $state.go('register',{'openid': $rootScope.openid});
-            } else if {
-
-            }
-          });
-        }
-      }
-    }*/
-
     var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
     checkModel.$find('checkSession').$then(function(response) {
       if (response.user) {

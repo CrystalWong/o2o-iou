@@ -1,24 +1,36 @@
 <!-- 消费记录 -->
 <div class="user-consume bg-white">
 	<div class="padding-1 overflow-hid">
-	   <p class="ft-1p8 margin-0">
-	      <span class="u-pull-left">消费记录</span>
+    <p class="ft-1p8 margin-0">
+      <span class="u-pull-left">消费记录</span>
 	 	  <a class="u-pull-right ft-1p2 margin-t-0p5 ft-grey2 underline" href={{config.account}}>&lt;返回我的账户</a>
 	  </p>
 	</div>
-	<div class="border-dotted-top border-grey-bottom">
-		<div class="status bg-yellow2 overflow-hid padding-2 margin-b-2">
-			<div class="u-pull-left ft-1p2"><span>白条额度(元)：</span><br/><span class="ft-3 ft-grey2 text-left">{{userAccount.maxQuota | currency :""}}</span></div>
-			<div class="u-pull-right ft-1p2"><span>可用白条(元)：</span><br/><span class="ft-3 ft-orange text-left">{{userAccount.availableQuota | number:2}}</span></div>
+	<hr class="margin-0 border-dotted-top clear">
+	<!-- 有消费记录 -->
+	<div ng-if="userConsume.data.length">
+		<div class="border-grey-bottom">
+			<div class="status bg-yellow2 overflow-hid padding-2 margin-b-2">
+				<div class="u-pull-left ft-1p2"><span>白条额度(元)：</span><br/><span class="ft-3 ft-grey2 text-left">{{userAccount.maxQuota | currency :""}}</span></div>
+				<div class="u-pull-right ft-1p2"><span>可用白条(元)：</span><br/><span class="ft-3 ft-orange text-left">{{userAccount.availableQuota | number:2}}</span></div>
+			</div>
+		</div>
+		<div class="position-re border-grey-bottom" ng-repeat="item in userConsume.data">
+			<div class="padding-2 overflow-hid">
+				<div class="u-pull-left"><span class="ft-1p8">{{item.shopName}}</span><br/><!-- <span class="ft-1p2 ft-grey2">订单：{{item.number}}</span> --></div>
+				<div class="u-pull-right"><span class="ft-blue3 ft-1p8">{{item.consumeAmount}}元</span><br/><span class="ft-1p2 ft-grey2">日期：{{item.createTime | date:'yyyy-MM-dd'}}</span></div>
+				
+			</div>
+			<div class="consume-status-icon position-ab" ng-show="{{item.payStatus == 1}}"><img class="u-pull-right" src="/images/consume-paid.png"></div>
+			<div class="consume-status-icon position-ab" ng-show="{{item.payStatus == 0}}"><img class="u-pull-right" src="/images/consume-no-pay.png"></div>
 		</div>
 	</div>
-	<div class="position-re border-grey-bottom" ng-repeat="item in userConsume.data">
-		<div class="padding-2 overflow-hid">
-			<div class="u-pull-left"><span class="ft-1p8">{{item.shopName}}</span><br/><!-- <span class="ft-1p2 ft-grey2">订单：{{item.number}}</span> --></div>
-			<div class="u-pull-right"><span class="ft-blue3 ft-1p8">{{item.consumeAmount}}元</span><br/><span class="ft-1p2 ft-grey2">日期：{{item.createTime | date:'yyyy-MM-dd'}}</span></div>
-			
-		</div>
-		<div class="consume-status-icon position-ab" ng-show="{{item.payStatus == 1}}"><img class="u-pull-right" src="/images/consume-paid.png"></div>
-		<div class="consume-status-icon position-ab" ng-show="{{item.payStatus == 0}}"><img class="u-pull-right" src="/images/consume-no-pay.png"></div>
-	</div>
+  <!-- 无消费记录 -->
+  <div class="margin-t-2 padding-2 text-center" ng-if="!userConsume.data.length">
+    <div class="border-grey border-width border-ra-50 text-center bg-circle">
+      <i class="fa fa-list-ul ft-7 ft-grey2">&nbsp;</i>
+    </div>
+    <p class="margin-t-2">您尚未使用白条进行消费，因此没有消费记录哦~</p>
+  </div>
+
 </div>
