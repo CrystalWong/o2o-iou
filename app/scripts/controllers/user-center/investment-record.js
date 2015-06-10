@@ -37,7 +37,7 @@ angular.module('o2oWechatIou')
               $scope.msg = '获取购买信息失败';
             }
           });
-        }
+        };
 
         $scope.getDeals();           
 
@@ -49,7 +49,7 @@ angular.module('o2oWechatIou')
          
         //用户未登录状态
       } else if (!response.user) {
-        window.location.href = config.weixin_redirect;
+        window.location.href = config.wechatRedirect;
       } else if(response.ret === -1) {
         // $rootScope.isLogged = false;
         $rootScope.userInfo = null;
@@ -58,7 +58,7 @@ angular.module('o2oWechatIou')
     });
 
 
-
+$scope.aa= 'test';
 
 
   }]);

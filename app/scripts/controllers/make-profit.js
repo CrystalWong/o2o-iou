@@ -8,7 +8,7 @@
  * Controller of the o2oWechatIou
  */
 angular.module('o2oWechatIou')
-  .controller('MakeProfitCtrl', ['$scope', '$state', '$rootScope', '$stateParams', 'fundsProjects', 'restmod', 'DEFAULT_DOMAIN', 'config', function($scope, $state, $rootScope, $stateParams, fundsProjects, restmod, DEFAULT_DOMAIN, config) {
+  .controller('MakeProfitCtrl', ['$scope', '$state', '$rootScope', '$stateParams', 'fundsProjects', 'restmod', 'DEFAULT_DOMAIN', 'config', 'IouUser', function($scope, $state, $rootScope, $stateParams, fundsProjects, restmod, DEFAULT_DOMAIN, config, IouUser) {
     $rootScope.selected = 'financing';
     
     $scope.showFundsAgreement = false;
@@ -113,13 +113,13 @@ angular.module('o2oWechatIou')
                     } else {
                       $scope.msg = response.msg;
                     }
-                  })
+                  });
                 }
 
               } else {
                 $scope.msg = response.msg;
               }
-            })
+            });
           }
         });
       }
