@@ -8,12 +8,43 @@
   }
 }
 .investment-record {
-  .border-width {
-    border-width: 0.3rem;
-  }
   .status {
     display: inline-block;
     padding: 0 0.5rem;
   }
-}
+  .bg-circle {
+    width: 12rem;
+    height: 12rem;
+    padding: 3rem;
+    margin: 0 auto;
+  }
+  .record-bg {
+    background: url(/images/record-bg.png) repeat-x;
+    background-size: 4.5% 100%; 
+  } 
+} 
 
+.user-consume{
+    .status{
+      background-image: url(/images/consume.png);
+      background-position: center center;
+      background-repeat: no-repeat; 
+      background-size: 3% 80%;
+    }
+    .consume-paid{
+      background-image: url(/images/consume-paid.png);
+       background-position: right top;
+      background-size: 100% 100%;
+    }
+    .consume-no-paid{
+      background-image: url(/images/consume-no-pay.png);
+      background-size: 100% 100%; 
+    }
+    .consume-status-icon{
+      top: 0;
+      right: 0;
+    }
+    .consume-status-icon img{
+      width: 60%;
+    }
+}

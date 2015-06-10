@@ -2,24 +2,37 @@
   <div class="padding-1 overflow-hid">
     <p class="ft-1p8 margin-0">
       <span class="u-pull-left">购买记录</span>
-      <a class="u-pull-right ft-1p2 margin-t-0p5 ft-grey2 underline" href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb0a7af1f7ab4d74a&amp;redirect_uri=http%3A%2F%2Fdbt.hongcai.com%2Fuser-center%2Faccount&amp;response_type=code&amp;scope=snsapi_base&amp;state=123#wechat_redirect">&lt;返回我的账户</a>
+      <a class="u-pull-right ft-1p2 margin-t-0p5 ft-grey2 underline" href={{config.account}}>&lt;返回我的账户</a>
     </p>
   </div>
   <hr class="margin-0 border-dotted-top clear">
-  <div class="padding-1 bg-white border-grey-bottom border-width">
-    白条利息：<strong class="ft-blue ft-1p6">{{ account.receivedProfit + account.waitingProfit || 0 | number: 2}}</strong>元
+  <!-- 有购买记录 -->
+  <div ng-if="creditsList.length">
+    <div class="padding-t-2 padding-b-2 padding-l-1 padding-r-1 record-bg">
+      白条利息(元)：<br><strong class="ft-white ft-2">{{ account.receivedProfit + account.waitingProfit || 0 | number: 2}}</strong>
+    </div>
+    <div class="margin-t-1 padding-l-1 padding-r-1 padding-t-2 padding-b-2 overflow-hid border-grey" ng-repeat="item in creditsList">
+      <div class="u-pull-left">
+        <span>{{ item.amount || 0 | number: 2 }}元</span>&nbsp;<span class="status ft-white ft-1p2 border-ra-0p5" ng-class="{ 'bg-grey': item.status === 3,'bg-green': item.status !== 3 }">赚钱的白条</span>
+        <br>
+        <small class="ft-grey2">{{ item.createTime | amDateFormat:'YYYY-MM-DD' }} 购买</small>
+      </div>
+      <div class="u-pull-right">
+        <span class="ft-blue">{{ item.profit || 0 | number: 2 }}元</span>&nbsp;<span class="status ft-white ft-1p2 border-ra-0p5" ng-class="{ 'bg-grey': item.status === 3,'bg-green': item.status !== 3 }">利息</span>
+        <br>
+        <small class="ft-grey2">{{ item.repaymentDate | amDateFormat:'YYYY-MM-DD' }} 到期</small>
+      </div>
+    </div>
+    <div class="text-center padding-t-2">
+      <input type="button" class="button button-primary" ng-click="loadDealMore();" value="加载更多...">
+    </div>
   </div>
-  <div class="margin-t-1 padding-l-1 padding-r-1 padding-t-2 padding-b-2 overflow-hid border-grey" ng-repeat="item in creditsList">
-    <div class="u-pull-left">
-      <span>{{ item.amount || 0 | number: 2 }}元</span>&nbsp;<span class="status ft-white ft-1p2 border-ra-0p5" ng-class="{ 'bg-grey': item.status === 3,'bg-green': item.status !== 3 }">赚钱的白条</span>
-      <br>
-      <small class="ft-grey2">{{ item.createTime | amDateFormat:'YYYY-MM-DD' }} 购买</small>
+  <!-- 无购买记录 -->
+  <div class="margin-t-2 padding-2 text-center" ng-if="!creditsList.length">
+    <div class="border-grey border-width border-ra-50 text-center bg-circle">
+      <i class="fa fa-list-ul ft-7 ft-grey2">&nbsp;</i>
     </div>
-    <div class="u-pull-right">
-      <span class="ft-blue">{{ item.profit || 0 | number: 2 }}元</span>&nbsp;<span class="status ft-white ft-1p2 border-ra-0p5" ng-class="{ 'bg-grey': item.status === 3,'bg-green': item.status !== 3 }">利息</span>
-      <br>
-      <small class="ft-grey2">{{ '2015-08-18' }} 到期</small>
-    </div>
+    <p class="margin-t-2">您尚未购买过白条理财，因此没有理财记录哦~</p>
+  </div>
 
-  </div>
 </div>

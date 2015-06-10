@@ -41,9 +41,7 @@ o2oWechatIou
             templateUrl: 'views/root.html'
           },
           'header': {
-            templateUrl: 'views/_header.html',
-            controller: 'HeaderCtrl',
-            controllerUrl: 'scripts/controller/header-ctrl'
+            templateUrl: 'views/_header.html'
           }
         }
       })
@@ -110,6 +108,16 @@ o2oWechatIou
           }
         }
       })
+      .state('consume-record', {
+        url: '/consume-record',
+        views: {
+          '': {
+            templateUrl: 'views/user-center/consume-record.html',
+            controller: 'ConsumeRecordCtrl',
+            controllerUrl: 'scripts/controllers/user-center/consume-record'
+          }
+        }
+      })
       // 常见问题
       .state('faq', {
         url: '/faq',
@@ -138,26 +146,24 @@ o2oWechatIou
     $urlRouterProvider.when('', '/');
 
 }])
-  .run(function($rootScope, $stateParams, DEFAULT_DOMAIN, $state, $location, $http, restmod) {
-    var routespermission = [
-      '/user-center'
-    ];
+  .run(function($rootScope, $stateParams, DEFAULT_DOMAIN, $state, $location, $http, restmod, config) {
+    $rootScope.config = config;
     var titleMap = {'issue': '常见问题', 'about': '帮助中心', 'safe': '安全保障', 'account': '账户总览'};
     $rootScope.$on('$stateChangeStart', function() {
-/*      var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
+      /*var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
       checkModel.$find('checkSession').$then(function(response) {
         if (response.user) {
-          $rootScope.isLogged = true;
+          // $rootScope.isLogged = true;
           $rootScope.openid = response.openid;
           $rootScope.userInfo = response;
           //用户未登录状态
         } else if(response.ret === -1) {
-          $rootScope.isLogged = false;
+          // $rootScope.isLogged = false;
           $rootScope.userInfo = null;
           $rootScope.openid = null;
         }
       });*/
-      
+        
     });
     $rootScope.$on('$stateChangeSuccess', function() {
       var path = $location.path().split('/')[1];
