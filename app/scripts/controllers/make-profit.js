@@ -16,6 +16,22 @@ angular.module('o2oWechatIou')
       $scope.showFundsAgreement = !$scope.showFundsAgreement;
     };
 
+    IouUser.$find('checkSession').$then(function(response) {
+      if (response.user) {
+        $rootScope.userInfo = response.user;
+        IouUser.$find($rootScope.userInfo.id + '/account').$then(function(response) {
+          if (response.$status === 'ok') {
+            // 获取用户金额信息
+            $scope.userAccount = response;
+          } else {
+            // 获取信息失败。
+          }
+        });
+      }
+    });
+
+    
+
 
     if (!$rootScope.openid || $rootScope.openid === null || $rootScope.openid === undefined) {
       // var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
@@ -84,8 +100,7 @@ angular.module('o2oWechatIou')
     $scope.toInvest = function(simpleFundsProject) {
       if (!$scope.investmentFlag) {
         $scope.investmentFlag = true;
-        var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
-        checkModel.$find('checkSession').$then(function(response) {
+        IouUser.$find('checkSession').$then(function(response) {
           if (response.user) {
             $rootScope.userInfo = response.user;
             // restmod.model(DEFAULT_DOMAIN + '/fundsProjects/' + simpleFundsProject.number + '/users/6/investment').$create({
