@@ -8,7 +8,7 @@
  * Controller of the o2oWechatIou
  */
 angular.module('o2oWechatIou')
-  .controller('RegisterCtrl', ['$rootScope', '$scope', '$state', '$stateParams', 'md5', 'register', 'wechat', 'mobileCaptcha', 'config', function($rootScope, $scope, $state, $stateParams, md5, register, wechat, mobileCaptcha, config) {
+  .controller('RegisterCtrl', ['$rootScope', '$scope', '$state', '$stateParams', 'md5', 'register', 'mobileCaptcha', 'config', function($rootScope, $scope, $state, $stateParams, md5, register, mobileCaptcha, config) {
 
     $scope.signUp = function(user) {
       register.$create({
