@@ -110,6 +110,39 @@ o2oWechatIou
           }
         }
       })
+      //消费店铺列表页
+      .state('root.consume', {
+        url: '/consume',
+        views: {
+          '': {
+            templateUrl: 'views/shop-consume/shop_list_iou.html',
+            controller: 'AccountCtrl',
+            controllerUrl: 'scripts/controllers/user-center/account'
+          }
+        }
+      })
+      //消费店铺详情页
+      .state('shop-detail', {
+        url: '/shop-detail',
+        views: {
+          '': {
+            templateUrl: 'views/shop-consume/shop_details.html',
+            controller: 'AccountCtrl',
+            controllerUrl: 'scripts/controllers/user-center/account'
+          }
+        }
+      })
+      //消费店铺详情页
+      .state('root.consume-ok', {
+        url: '/consume-ok',
+        views: {
+          '': {
+            templateUrl: 'views/shop-consume/pay_ok.html',
+            controller: 'AccountCtrl',
+            controllerUrl: 'scripts/controllers/user-center/account'
+          }
+        }
+      })
       // 常见问题
       .state('faq', {
         url: '/faq',
