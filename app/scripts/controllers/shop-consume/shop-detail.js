@@ -47,7 +47,8 @@ angular.module('o2oWechatIou')
         Consume.$find('/'+ $stateParams.shopId).$then(function(response) {
           if (response.$status === 'ok') {
             
-            $scope.shopsPaging = response; // 当前页店铺信息
+            $scope.shop = response; // 当前页店铺信息
+            $scope.seller = response.sellers[0];
           } else {
             // 获取信息失败。
           }
