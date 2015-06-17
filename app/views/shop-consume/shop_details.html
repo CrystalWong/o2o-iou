@@ -14,35 +14,32 @@
 </head>
 <body class="bg_white"> -->
 <div class="title_iou">
-	<strong class="f_size_2rem fl">某某店铺</strong>
+	<strong class="f_size_2rem fl">{{shop.shopName}}</strong>
 	<a class="fr back" onclick="location.href='shop_list_iou.html';">&lt;返回店铺列表</a>
 </div>
 <hr class="bd_dotted_top">
 <div class="bg_dot_yellow">
 	<label>可用白条（元）：</label>
-	<div class="font_white f_size_4rem">800.00</div>
+	<div class="font_white f_size_4rem">{{account.availableQuota | number:2}}</div>
 </div>
 <div class="pd_lr2rem pd_tb1rem">
 	<div class="clearfix"><span class="fr font_orange2 f_size_120per_rem mg_t30per_rem">请核对店员姓名</span><label class="fl">付款到：</label></div>
 	<div class="pd_tb50per_rem">
-		<select data-am-selected="data-am-selected">
-			<option value="店主小强">店主小强</option>
-			<option value="店员小A">店员小A</option>
-			<option value="店员B">店员B</option>
-			<option value="店员C">店员C</option>
+		<select class="form-control" ng-model="seller" ng-options="seller.sellerName for seller in shop.sellers">
+		    
 		</select>
 	</div>
 	<label>消费金额（元）：</label>
-	<input type="text" class="am-form-field mg_t50per_rem" placeholder="请输入消费金额">
+	<input type="text" class="am-form-field mg_t50per_rem" placeholder="请输入消费金额" ng-model="consumeAmount" required ng-pattern="/^([1-9][\d]{0,7}|0)(\.[\d]{1,2})?$/" ng-focus>
 	<hr class="mg_b150per_rem">
-	<div class="clearfix"><span class="fr mg_t-35per_rem">共节省(元)：<label class="f_size_180per_rem font_orange2">5.00</label></span><span class="fl">￥打白条用户全场9折</span></div>
+	<div class="clearfix"><span class="fr mg_t-35per_rem">共节省(元)：<label class="f_size_180per_rem font_orange2">{{consumeAmount * (1 - shop.rebate) | number:2}}</label></span><span class="fl">￥打白条用户全场{{shop.rebate * 10 | number:0}}折</span></div>
 	<hr class="mg_t50per_rem mg_b40per_rem">
-	<div class="clearfix"><label class="fr font_skyblue2 f_size_180per_rem">35.00</label><label class="fl">实际支付（元）：</label></div>
+	<div class="clearfix"><label class="fr font_skyblue2 f_size_180per_rem">{{consumeAmount * shop.rebate|| 0 | number:2}}</label><label class="fl">实际支付（元）：</label></div>
 	<button type="button" class="am-btn am-btn-default am-radius am-btn-block mg_t50per_rem" id="pay">确认付款</button>
 </div>
 <div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
 	<div class="am-modal-dialog">
-		<div class="text_center pd_b1rem"><p>请您确认是<span class="font_orange2 mg_lr_50per_rem">某某店铺</span>消费<span class="font_orange2 mg_lr_50per_rem">35.00</span>元？该款项将从您的信用额度中扣除</p></div>
+		<div class="text_center pd_b1rem"><p>请您确认是<span class="font_orange2 mg_lr_50per_rem">某某店铺</span>消费<span class="font_orange2 mg_lr_50per_rem">{{consumeAmount * shop.rebate || 0 | number:2}}</span>元？该款项将从您的信用额度中扣除</p></div>
 		<div class="am-modal-footer">
 			<span class="am-modal-btn am-modal-btn_cancel" data-am-modal-cancel>取消</span>
 			<span class="am-modal-btn" data-am-modal-confirm onclick="location.href='pay_ok.html';">确认</span>

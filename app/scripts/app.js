@@ -183,6 +183,7 @@ o2oWechatIou
           // $rootScope.isLogged = true;
           $rootScope.openid = response.user.openid;
           $rootScope.userInfo = response.user;
+          $rootScope.account = response.account;
           //用户未登录状态
         } else if(response.ret === -1) {
           // $rootScope.isLogged = false;
