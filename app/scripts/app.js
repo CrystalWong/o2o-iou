@@ -116,8 +116,8 @@ o2oWechatIou
         views: {
           '': {
             templateUrl: 'views/shop-consume/shop_list_iou.html',
-            controller: 'AccountCtrl',
-            controllerUrl: 'scripts/controllers/user-center/account'
+            controller: 'ConsumeCtrl',
+            controllerUrl: 'scripts/controllers/shop-consume/consume'
           }
         }
       })
@@ -171,23 +171,23 @@ o2oWechatIou
     $urlRouterProvider.when('', '/');
 
 }])
-  .run(function($rootScope, $stateParams, DEFAULT_DOMAIN, $state, $location, $http, restmod, config) {
+  .run(function($rootScope, $stateParams, DEFAULT_DOMAIN, $state, $location, $http, restmod, config, IouUser) {
     $rootScope.config = config;
     // var titleMap = {'issue': '常见问题', 'about': '帮助中心', 'safe': '安全保障', 'account': '账户总览'};
     $rootScope.$on('$stateChangeStart', function() {
-      /*var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
-      checkModel.$find('checkSession').$then(function(response) {
+      /*var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');*/
+      IouUser.$find('checkSession').$then(function(response) {
         if (response.user) {
           // $rootScope.isLogged = true;
-          $rootScope.openid = response.openid;
-          $rootScope.userInfo = response;
+          $rootScope.openid = response.user.openid;
+          $rootScope.userInfo = response.user;
           //用户未登录状态
         } else if(response.ret === -1) {
           // $rootScope.isLogged = false;
           $rootScope.userInfo = null;
           $rootScope.openid = null;
         }
-      });*/
+      });
         
     });
     $rootScope.$on('$stateChangeSuccess', function() {
