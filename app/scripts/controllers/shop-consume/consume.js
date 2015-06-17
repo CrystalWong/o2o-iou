@@ -11,6 +11,7 @@ angular.module('o2oWechatIou')
   .controller('ConsumeCtrl', ['$scope', '$rootScope', '$state', 'IouUser', 'Consume', function ($scope, $rootScope, $state, IouUser, Consume) {
     $rootScope.selected =  'iou';
 
+    $rootScope.checkSession.promise.then(function(){
     //检测用户是否已注册
     if (!$rootScope.openid || $rootScope.openid === null || $rootScope.openid === undefined) {
       // var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
@@ -52,9 +53,9 @@ angular.module('o2oWechatIou')
     }
 
 
-    
+  });
 
 
 
 
-  }]);
+}]);

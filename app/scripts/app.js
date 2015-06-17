@@ -171,12 +171,14 @@ o2oWechatIou
     $urlRouterProvider.when('', '/');
 
 }])
-  .run(function($rootScope, $stateParams, DEFAULT_DOMAIN, $state, $location, $http, restmod, config, IouUser) {
+  .run(function($q, $rootScope, $stateParams, DEFAULT_DOMAIN, $state, $location, $http, restmod, config, IouUser) {
     $rootScope.config = config;
     // var titleMap = {'issue': '常见问题', 'about': '帮助中心', 'safe': '安全保障', 'account': '账户总览'};
     $rootScope.$on('$stateChangeStart', function() {
       /*var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');*/
+      $rootScope.checkSession = $q.defer();
       IouUser.$find('checkSession').$then(function(response) {
+        $rootScope.checkSession.resolve(response);
         if (response.user) {
           // $rootScope.isLogged = true;
           $rootScope.openid = response.user.openid;
@@ -190,7 +192,10 @@ o2oWechatIou
       });
         
     });
+
+
     $rootScope.$on('$stateChangeSuccess', function() {
+      console.log('stateChangeSuccess');
       /*var path = $location.path().split('/')[1];
       $rootScope.showPath = path;
       $rootScope.showTitle = titleMap[path];*/
