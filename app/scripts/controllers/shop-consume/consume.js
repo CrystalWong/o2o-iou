@@ -28,7 +28,7 @@ angular.module('o2oWechatIou')
               $state.go('register',{'openid': $rootScope.openid});
 
             } else if ($rootScope.openid && response.mobile) { // 用户已注册
-              Consume.$find().$then(function(response) {
+              Consume.$find('/').$then(function(response) {
                 if (response.$status === 'ok') {
                   
                   $scope.shopsPaging = response; // 当前页店铺信息

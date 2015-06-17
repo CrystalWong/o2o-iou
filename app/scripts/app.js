@@ -123,12 +123,12 @@ o2oWechatIou
       })
       //消费店铺详情页
       .state('shop-detail', {
-        url: '/shop-detail',
+        url: '/shop-detail/:shopId',
         views: {
           '': {
             templateUrl: 'views/shop-consume/shop_details.html',
-            controller: 'AccountCtrl',
-            controllerUrl: 'scripts/controllers/user-center/account'
+            controller: 'ShopDetailCtrl',
+            controllerUrl: 'scripts/controllers/shop-consume/shop-detail'
           }
         }
       })

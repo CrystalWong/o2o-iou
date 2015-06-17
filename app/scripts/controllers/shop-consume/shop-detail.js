@@ -8,7 +8,7 @@
  * Controller of the o2oWechatIou
  */
 angular.module('o2oWechatIou')
-  .controller('AccountCtrl', ['$scope', '$rootScope', '$state', 'IouUser', function ($scope, $rootScope, $state, IouUser) {
+  .controller('ShopDetailCtrl', ['$scope', '$rootScope', '$state', '$stateParams', 'IouUser', 'Consume', function ($scope, $rootScope, $state, $stateParams, IouUser, Consume) {
     $rootScope.selected =  'account';
 
     //检测用户是否已注册
@@ -37,6 +37,15 @@ angular.module('o2oWechatIou')
           });
         }
       }
+    } else {
+      Consume.$find('/' + $stateParams.shopId).$then(function(response) {
+        if (response.$status === 'ok') {
+          // 获取用户金额信息
+          $scope.userAccount = response;
+        } else {
+          // 获取信息失败。
+        }
+      });
     }
 
 
