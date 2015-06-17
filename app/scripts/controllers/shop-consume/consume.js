@@ -11,6 +11,11 @@ angular.module('o2oWechatIou')
   .controller('ConsumeCtrl', ['$scope', '$rootScope', '$state', 'IouUser', 'Consume', function ($scope, $rootScope, $state, IouUser, Consume) {
     $rootScope.selected =  'iou';
 
+
+    $scope.goShopDetail = function(shop){
+      $state.go('shop-detail', {shopId: shop.shopId});
+    }
+
     $rootScope.checkSession.promise.then(function(){
     //检测用户是否已注册
     if (!$rootScope.openid || $rootScope.openid === null || $rootScope.openid === undefined) {
@@ -45,7 +50,7 @@ angular.module('o2oWechatIou')
       Consume.$find('/').$then(function(response) {
         if (response.$status === 'ok') {
           
-          $scope.shopsPaging = response; // 当前页店铺信息
+          $scope.pagingShops = response; // 当前页店铺信息
         } else {
           // 获取信息失败。
         }
