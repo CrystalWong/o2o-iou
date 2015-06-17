@@ -39,10 +39,10 @@ o2oWechatIou
         views: {
           '': {
             templateUrl: 'views/root.html'
-          },
+          }/*,
           'header': {
             templateUrl: 'views/_header.html'
-          }
+          }*/
         }
       })
       // 打白条
