@@ -3,7 +3,7 @@
         <p class="ft-2 margin-0"><strong>用户注册</strong></p>
     </div>
     <hr class="margin-0 border-dotted-top">
-    <form class="register margin-0 padding-t-2 padding-b-2 padding-l-1 padding-r-1 ft-grey2" name="registerForm" autocomplete="on" ng-submit="signUp(user);">
+    <form class="register margin-0 padding-t-2 padding-b-2 padding-l-1 padding-r-1 ft-grey2" name="registerForm" autocomplete="off" novalidate="novalidate" ng-submit="signUp(user);">
         <p class="margin-0 border-grey border-ra-0p5 margin-b-1p5" ng-class="{'border-red':registerForm.mobile.$dirty && registerForm.mobile.$invalid && !registerForm.mobile.$blur}">
             <label for="mobilesignup"><small>手机号码</small>
             </label>
@@ -17,7 +17,7 @@
         <p class="margin-0 border-grey border-ra-0p5 margin-b-1p5 u-pull-left" style="width: 65%;">
           <label for="captchasignup" style="width: 39%;"><small>验证码</small>
           </label>
-          <input id="captchasignup" name="captchasignup" ng-model="user.captcha" required="required" type="text" placeholder="输入6位验证码" style="width: 61%;" />
+          <input id="captchasignup" name="captchasignup" ng-model="user.captcha" required type="text" placeholder="输入6位验证码" style="width: 61%;" />
         </p>
         <p class="getCaptcha u-pull-left" style="width: 30%;">
           <button type="button" class="{{registerForm.mobile.$invalid ? 'button-disabled' : 'button-primary'}}" onclick="countDown(this,60);" ng-click="sendMobileCaptcha(user);" ng-disabled="registerForm.mobile.$invalid">获取验证码</button>
