@@ -52,25 +52,15 @@
 		<input class="search-input" placeholder="搜索店铺名"/>
 		<a class="btn-account u-pull-right"><img src="/images/img_shop/account.png"></a>
 	</div>
-	<ul class="margin-1">
-		<li class="overflow-hid bg-white margin-t-0p5 margin-b-0p5">
+	<ul class="margin-1" ng-repeat="shop in pagingShops.data">
+		<li class="overflow-hid bg-white margin-t-0p5 margin-b-0p5" ng-click="goShopDetail(shop)">
 			<span class="img_shop_iou u-pull-left"><img src="/images/img_shop/0.jpg"></span>
 			<div class="u-pull-left padding-1 ft-1">
 				<div>
-					<span class="ft-1p4 txt-shop-name">顺口溜（新奥店）</span>
-					<span class="discout-info ft-white">全店7折</span>
+					<span class="ft-1p4 txt-shop-name">{{shop.shopName}}</span>
+					<span class="discout-info ft-white">全店{{shop.rebate * 10 | number : 1}}折</span>
 				</div>
-				<div class="ft-grey2 position-ab bottom-text"><i class="fa fa-map-marker ft-1p8 margin-r-0p5"></i>新奥购物中心1层</div>	
-			</div>
-		</li>
-		<li class="overflow-hid bg-white margin-t-0p5 margin-b-0p5">
-			<span class="img_shop_iou u-pull-left"><img src="/images/img_shop/0.jpg"></span>
-			<div class="u-pull-left padding-1 ft-1">
-				<div>
-					<span class="ft-1p5 txt-shop-name">顺口溜（新奥店）</span>
-					<span class="discout-info ft-white">全店7折</span>
-				</div>
-				<div class="ft-grey2 position-ab bottom-text"><i class="fa fa-map-marker ft-1p8 margin-r-0p5"></i>新奥购物中心1层</div>	
+				<div class="ft-grey2 position-ab bottom-text"><i class="fa fa-map-marker ft-1p8 margin-r-0p5"></i>{{shop.address}}</div>	
 			</div>
 		</li>
 		
