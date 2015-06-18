@@ -19,7 +19,7 @@
 	<li class="w_1-3"><a class="font_white" href="#">我的账户</a></li>
 </ul>
  -->
-<div class="bg_blue_l pd_t50per_rem mg_t1px">
+<!--<div class="bg_blue_l pd_t50per_rem mg_t1px">
 	<div class="mg_lr_50per_rem">
 		<div class="am-input-group">
 			<input type="text" class="am-form-field" value="输入店名查询">
@@ -39,5 +39,38 @@
 		</li>
 	</ul>
 </div>
+
+-->
+
+
+
+
+
+<div class="shop-list">
+	<div class="bg-blue1 overflow-hid position-re shop-head">
+		<i class="fa fa-search position-ab ft-grey2"></i>
+		<input class="search-input" placeholder="搜索店铺名"/>
+		<a class="btn-account u-pull-right"><img src="/images/img_shop/account.png"></a>
+	</div>
+	<ul class="margin-1" ng-repeat="shop in pagingShops.data">
+		<li class="overflow-hid bg-white margin-t-0p5 margin-b-0p5" ng-click="goShopDetail(shop)">
+			<span class="img_shop_iou u-pull-left"><img src="/images/img_shop/0.jpg"></span>
+			<div class="u-pull-left padding-1 ft-1">
+				<div>
+					<span class="ft-1p4 txt-shop-name">{{shop.shopName}}</span>
+					<span class="discout-info ft-white">全店{{shop.rebate * 10 | number : 1}}折</span>
+				</div>
+				<div class="ft-grey2 position-ab bottom-text"><i class="fa fa-map-marker ft-1p8 margin-r-0p5"></i>{{shop.address}}</div>	
+			</div>
+		</li>
+		
+	</ul>
+</div>
+
+<script language="JavaScript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js">
+</script>
+
+
+
 <!-- </body>
 </html> -->
