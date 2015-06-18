@@ -173,6 +173,13 @@ o2oWechatIou
 }])
   .run(function($q, $rootScope, $stateParams, DEFAULT_DOMAIN, $state, $location, $http, restmod, config, IouUser) {
     $rootScope.config = config;
+    // 需要用户注册才能访问的url
+    var routespermission = [
+      '/account',
+      '/consume-record',
+      '/investment-record'
+    ];
+
     // var titleMap = {'issue': '常见问题', 'about': '帮助中心', 'safe': '安全保障', 'account': '账户总览'};
     $rootScope.$on('$stateChangeStart', function() {
       /*var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');*/
@@ -180,15 +187,32 @@ o2oWechatIou
       IouUser.$find('checkSession').$then(function(response) {
         $rootScope.checkSession.resolve(response);
         if (response.user) {
-          // $rootScope.isLogged = true;
+
+          $rootScope.isLogged = true;
           $rootScope.openid = response.user.openid;
           $rootScope.userInfo = response.user;
           $rootScope.account = response.account;
-          //用户未登录状态
-        } else if(response.ret === -1) {
-          // $rootScope.isLogged = false;
-          $rootScope.userInfo = null;
-          $rootScope.openid = null;
+          
+        } else if(response.ret === -1) { //用户未登录，。
+          var wechat_code = $location.search().code;
+
+          if (wechat_code){ // 用户未登录但已经有code，去登录
+            IouUser.$find(wechat_code + '/openid').$then(function(response){
+              $rootScope.openid = response.openid;
+              $rootScope.userInfo = response;
+              if ($rootScope.openid && !response.mobile && routespermission.indexOf($location.path())) { // 未注册，且访问的url需要注册，则需要跳转到注册页
+                $state.go('register',{'openid': $rootScope.openid});
+              }
+              
+            });
+          } else { // 未登录且还未授权
+
+            var wechatRedirectUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + config.wechatAppid + 
+              "&redirect_uri=" + encodeURIComponent($location.absUrl()) + "&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
+            window.location.href = wechatRedirectUrl;
+
+          }
+
         }
       });
         
@@ -196,7 +220,6 @@ o2oWechatIou
 
 
     $rootScope.$on('$stateChangeSuccess', function() {
-      console.log('stateChangeSuccess');
       /*var path = $location.path().split('/')[1];
       $rootScope.showPath = path;
       $rootScope.showTitle = titleMap[path];*/
