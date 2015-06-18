@@ -187,9 +187,10 @@ o2oWechatIou
           $rootScope.userInfo = response.user;
           $rootScope.account = response.account;
           
-        } else if(response.ret === -1) { //用户未登录，则跳转到授权页进行登录。
+        } else if(response.ret === -1) { //用户未登录，。
           var wechat_code = $location.search().code;
-          if (wechat_code){
+
+          if (wechat_code){ // 用户未登录但已经有code，去登录
             IouUser.$find(wechat_code + '/openid').$then(function(response){
               $rootScope.openid = response.openid;
               $rootScope.userInfo = response;
@@ -198,7 +199,7 @@ o2oWechatIou
               }
               
             });
-          } else {
+          } else { // 未登录且还未授权
 
             var wechatRedirectUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + config.wechatAppid + 
               "&redirect_uri=" + encodeURIComponent($location.absUrl()) + "&response_type=code&scope=snsapi_base&state=123#wechat_redirect";

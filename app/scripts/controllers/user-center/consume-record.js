@@ -11,9 +11,9 @@ angular.module('o2oWechatIou')
   .controller('ConsumeRecordCtrl', ['$scope', '$rootScope', '$state', 'IouUser', 'restmod', 'DEFAULT_DOMAIN', 'config', function ($scope, $rootScope, $state, IouUser, restmod, DEFAULT_DOMAIN, config) {
 
     // var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
-    IouUser.$find('checkSession').$then(function(response) {
-      if (response.user) {
-        $rootScope.userInfo = response.user;
+    $rootScope.checkSession.promise.then(function(){
+      if ($rootScope.userInfo) {
+
         $scope.page = 1;
         $scope.pageSize = 10;
         $scope.getConsumeRecord = function () {
@@ -50,13 +50,7 @@ angular.module('o2oWechatIou')
         });
          
         //用户未登录状态
-      } else if (!response.user) {
-        window.location.href = config.wechatRedirect;
-      } else if(response.ret === -1) {
-        // $rootScope.isLogged = false;
-        $rootScope.userInfo = null;
-        $rootScope.openid = null;
-      }
+      } 
     });
 
   }]);
