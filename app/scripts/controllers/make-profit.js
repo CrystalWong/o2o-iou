@@ -16,9 +16,10 @@ angular.module('o2oWechatIou')
       $scope.showFundsAgreement = !$scope.showFundsAgreement;
     };
 
-    IouUser.$find('checkSession').$then(function(response) {
-      if (response.user) {
-        $rootScope.userInfo = response.user;
+    $rootScope.checkSession.promise.then(function(){
+    // IouUser.$find('checkSession').$then(function(response) {
+    //   if (response.user) {
+    //     $rootScope.userInfo = response.user;
         IouUser.$find($rootScope.userInfo.id + '/account').$then(function(response) {
           if (response.$status === 'ok') {
             // 获取用户金额信息
@@ -27,39 +28,39 @@ angular.module('o2oWechatIou')
             // 获取信息失败。
           }
         });
-      }
-    });
-
+      // }
+    // });
+  });
     
 
 
-    if (!$rootScope.openid || $rootScope.openid === null || $rootScope.openid === undefined) {
-      // var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
-      // 获取微信code
-      $rootScope.wechatCodeStr = window.location.href.split('code=')[1];
-      if ($rootScope.wechatCodeStr) {
-        $rootScope.wechatCode = $rootScope.wechatCodeStr.split('&state')[0];
-        if ($rootScope.wechatCode) {
-          IouUser.$find($rootScope.wechatCode + '/openid').$then(function(response){
-            $rootScope.openid = response.openid;
-            $rootScope.userInfo = response;
-            if ($rootScope.openid && !response.mobile) {
-              $state.go('register',{'openid': $rootScope.openid});
-            } else if ($rootScope.userInfo.id) {
-              IouUser.$find($rootScope.userInfo.id + '/account').$then(function(response) {
-                if (response.$status === 'ok') {
-                  // 获取用户金额信息
-                  $scope.userAccount = response;
-                } else {
-                  // 获取信息失败。
-                }
-              });
-            }
+    // if (!$rootScope.openid || $rootScope.openid === null || $rootScope.openid === undefined) {
+    //   // var checkModel = restmod.model(DEFAULT_DOMAIN + '/users');
+    //   // 获取微信code
+    //   $rootScope.wechatCodeStr = window.location.href.split('code=')[1];
+    //   if ($rootScope.wechatCodeStr) {
+    //     $rootScope.wechatCode = $rootScope.wechatCodeStr.split('&state')[0];
+    //     if ($rootScope.wechatCode) {
+    //       IouUser.$find($rootScope.wechatCode + '/openid').$then(function(response){
+    //         $rootScope.openid = response.openid;
+    //         $rootScope.userInfo = response;
+    //         if ($rootScope.openid && !response.mobile) {
+    //           $state.go('register',{'openid': $rootScope.openid});
+    //         } else if ($rootScope.userInfo.id) {
+    //           IouUser.$find($rootScope.userInfo.id + '/account').$then(function(response) {
+    //             if (response.$status === 'ok') {
+    //               // 获取用户金额信息
+    //               $scope.userAccount = response;
+    //             } else {
+    //               // 获取信息失败。
+    //             }
+    //           });
+    //         }
             
-          });
-        }
-      }
-    }
+    //       });
+    //     }
+    //   }
+    // }
 
     // simple project
     fundsProjects.$find('recommendations').$then(function(response) {
