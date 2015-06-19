@@ -1,45 +1,18 @@
-<div class="funds-project bg-white">
-  <div class="padding-l-2 padding-r-2 padding-t-2">
-    <p class="ft-orange1 margin-0">*白条消费后仍享受收益（3个月）</p>
-    <div class="ft-grey2 bg-orange1 border-orange1 border-ra-0p5 padding-l-1 padding-r-1 padding-t-0p5 padding-b-0p5 margin-t-1">
-      <i class="fa fa-info-circle ft-orange2 ft-1p8"></i>
-      <span>可用白条：<strong class="ft-orange1">{{ userAccount.availableQuota || 0 | number: 2 }}元</strong></span>&nbsp;/&nbsp;
-      <span>白条额度：<strong class="ft-orange1">{{ 1000 || 0 | number: 2 }}元</strong></span>
-    </div>
-  </div>
+
+
+<div class="funds-project">
   <form name="investForm" class="investForm overflow-hid margin-0" ng-submit="toInvest(simpleFundsProject)">
-    <div class="padding-t-2 padding-l-2 padding-r-2">
-      <label>买入金额（投向融通基金，平安基金）</label>
-      <input type="number" name="investAmount" min="1" max={{1000-userAccount.availableQuota}} step="1" ng-model="simpleFundsProject.investAmount" placeholder="最高1000元"  ng-pattern="/^([1-9][\d]{0,7}|0)(\.[\d]{1,2})?$/" class="investAmount padding-t-1 padding-b-1 margin-b-1" required ng-focus>
-      <!-- <p class="ft-red" ng-if="investForm.investAmount.$dirty && investForm.investAmount.$invalid && !investForm.investAmount.$focused"> -->
-      <p class="ft-red" ng-if="investForm.investAmount.$dirty && investForm.investAmount.$invalid && !investForm.investAmount.$blur">
-        <span ng-if="investForm.investAmount.$error.pattern">请输入大于1的数字,最多可输入小数点后两位</span>
-        <span ng-if="investForm.investAmount.$error.max">输入的金额不能大于{{1000-userAccount.availableQuota}}</span>
-        <span ng-if="!investForm.investAmount.$error.pattern && !investForm.investAmount.$error.max">
-          请输入数字
-        </span>
-      </p>
-      <hr class="margin-0 margin-t-1 margin-b-1">
-      <p class="overflow-hid margin-b-2">
-        <span class="u-pull-left">到期利息：<strong class="ft-blue">{{ simpleFundsProject.investAmount*profitSingle || 0 | number: 2 }}</strong>元</span>
-        <span class="u-pull-right">年化收益：<strong class="ft-blue">{{ simpleFundsProject.product.baseRate}}%</strong></span>
-      </p>
+     <div class="padding-r-2 padding-l-2 padding-t-0p5 padding-b-1 margin-t-2 margin-b-2 bg-white">
+      <!-- <input type="radio" class="margin-0" checked> -->
+      <img class="position-re yeepay-img" src="/images/yeepay.png" width="25%">
+      <small>(绿色支付)</small>
     </div>
-    <hr class="border-width margin-0 margin-b-1">
-    <div class="padding-r-2 padding-l-2">
-      <label>支付方式</label>
-      <hr class="border-dotted-top margin-0 margin-b-1p5">
-      <div>
-        <!-- <input type="radio" class="margin-0" checked> -->
-        <img class="position-re yeepay-img" src="/images/yeepay.png" width="25%">
-        <small>(绿色支付)</small>
-      </div>
-      <button class="button button-primary border-ra-0p5 margin-t-1p5 ft-1p8" ng-class="{'button-disabled':investmentFlag || !simpleFundsProject.investAmount}" >买入</button>
-      <div class="text-center ft-1p2" ng-if="msg">{{ msg }}</a></div>
-      <div class="text-center ft-1p2">点击买入即视为同意<a href="javascript:;" class="underline">《购买协议》</a></div>
+    <div class="bg-white padding-l-2 padding-r-2 padding-t-0p5 padding-b-0p5 overflow-hid">
+      <label class="u-pull-left margin-0 padding-r-1 investLabel">买入金额</label>
+      <input type="number" name="investAmount" min="1" max={{1000-userAccount.availableQuota}} step="1" ng-model="simpleFundsProject.investAmount" placeholder="输入金额，最高900元"  ng-pattern="/^([1-9][\d]{0,7}|0)(\.[\d]{1,2})?$/" class="investAmount padding-l-1 u-pull-left margin-0" required ng-focus>
     </div>
-    <div class="margin-t-2p5 text-center ft-1p2"><a class="ft-grey2" ui-sref="faq">常见问题</a></div>
-  </form> 
-  <div class="alert-agreement" ng-show="showFundsAgreement" ng-include src="'views/_funds-agreement.html'">
-  </div>
+    <p class="ft-grey2 ft-1p2 padding-l-2 margin-t-0p5 margin-b-2">（投向融通基金，平安基金）</p>
+     <button class="button button-primary border-ra-0p5 margin-2 ft-1p8" ng-class="{'button-disabled':investmentFlag || !simpleFundsProject.investAmount}" >买入</button>
+     <div class="text-center ft-1p2 padding-b-1">点击买入即视为同意<a href="javascript:;" class="underline">《购买协议》</a></div>
+  </form>
 </div>
