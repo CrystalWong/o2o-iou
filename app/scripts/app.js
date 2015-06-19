@@ -111,8 +111,8 @@ o2oWechatIou
         }
       })
       //消费店铺列表页
-      .state('root.consume', {
-        url: '/consume',
+      .state('root.shop-list', {
+        url: '/shop-list',
         views: {
           '': {
             templateUrl: 'views/shop-consume/shop_list_iou.html',
