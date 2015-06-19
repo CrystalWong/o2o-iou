@@ -1,25 +1,24 @@
-<!-- <!doctype html>
+<!doctype html>
 <html class="no-js">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=no" />
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="format-detection" content="telephone=no" />
-	<title>打白条</title>
-	<script src="../assets/js/jquery.min.js"></script><script src="../assets/js/amazeui.js"></script>
-	<link rel="stylesheet" type="text/css" href="../assets/css/amazeui.css">
-	<link type="text/css" rel="stylesheet" href="../css/style.css"/>
-	<link type="text/css" rel="stylesheet" href="../css/iou.css"/>
-</head> -->
-<body class="bg_white">
-<div class="text_center mg_t5rem mg_lr1rem clearfix">
-	<img class="w_35per" src="../images/lianlian-callback.png">
+<!-- <div class="text_center padding-2">
+	<img src="/images/lianlian-callback.png">
 	<div class="mg_t1rem pd_b250per_rem">恭喜您，成功消费<span class="font_orange2 mg_lr_50per_rem">35.00</span>元！<br>款项已从您信用额度扣除</div>
 	<div class="btn_box clearfix">
 		<div class="fl w_50per pd_r25per_rem"><button type="button" class="am-btn am-btn-success am-radius am-btn-block">消费记录</button></div>
 		<div class="fr w_50per pd_l25per_rem"><button type="button" class="am-btn am-btn-default am-radius am-btn-block"  onclick="location.href='shop_list_iou.html';">浏览店铺</button></div>
 	</div>
+</div> -->
+
+<div class="bg-white padding-l-1 padding-r-1 padding-t-3 padding-b-3 overflow-hid text-center">
+    <div class="overflow-hid">
+        <img src="/images/yeepay-callback.png" width="35%"> 
+        <p class="padding-t-1">
+            恭喜您，成功消费<span class="ft-orange">{{ number }}元</span>！<br>款项已从您信用额度扣除
+        </p>
+        <div class="u-full-width twelve padding-l-1 padding-r-1 margin-b-1 padding-b-2">
+            <div class="half button ft-white bg-green border-none border-ra-0p5 padding-0"><a class="columns u-full-width padding-l-2 padding-r-2 ft-white" href={{config.consume}}>消费记录</a></div>
+            <div class="half button button-primary u-pull-right border-none border-ra-0p5" ui-sref="root.shop-list">浏览店铺</div>
+        </div>
+    </div> 
 </div>
-<!-- </body>
-</html> -->
