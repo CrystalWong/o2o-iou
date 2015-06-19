@@ -200,7 +200,7 @@ o2oWechatIou
             IouUser.$find(wechat_code + '/openid').$then(function(response){
               $rootScope.openid = response.openid;
               $rootScope.userInfo = response;
-              if ($rootScope.openid && !response.mobile && routespermission.indexOf($location.path())) { // 未注册，且访问的url需要注册，则需要跳转到注册页
+              if ($rootScope.openid && !response.mobile && !routespermission.indexOf($location.path()) == -1) { // 未注册，且访问的url需要注册，则需要跳转到注册页
                 $state.go('register',{'openid': $rootScope.openid});
               }
               

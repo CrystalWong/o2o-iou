@@ -12,6 +12,9 @@ angular.module('o2oWechatIou')
     $rootScope.selected =  'account';
 
     $rootScope.checkSession.promise.then(function(){
+      if ($rootScope.account){
+        $scope.userAccount = $rootScope.account;
+      } else {
         IouUser.$find($rootScope.userInfo.id + '/account').$then(function(response) {
           if (response.$status === 'ok') {
             // 获取用户金额信息
@@ -20,6 +23,7 @@ angular.module('o2oWechatIou')
             // 获取信息失败。
           }
         });
+      }
     });
 
 
