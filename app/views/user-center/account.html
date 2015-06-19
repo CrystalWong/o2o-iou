@@ -48,54 +48,56 @@
   <!-- 顶部 -->
   <div class="bg-blue1 ft-white">
     <div class="account_top text-center ft-1p8 padding-t-1 padding-b-1 border-white-bottom overflow-hid">
-      <img src="/images/icon0_account.png" width="27%" ui-sref="root.shop-list">
+      <a class="cart" ui-sref="root.shop-list">
+        <img src="/images/icon0_account.png">
+      </a>
       <span>用户ID: {{userInfo.id}}</span>
     </div>
     <div class="padding-l-1 padding-r-1 padding-t-2">
       <span>可用白条（元）</span>
       <div class="overflow-hid position-re">
-        <span class="u-pull-left ft-3">{{userAccount.availableQuota|number:2}}</span>
+        <span class="u-pull-left ft-3">{{userAccount.availableQuota || 0 |number:2}}</span>
         <span class="border-white padding-l-2 padding-r-2 ft-1p5 position-ab recharge" ui-sref="root.iou">充值</span>
       </div>
     </div>
     <div class="account-stat">&nbsp;</div>
   </div>
   <!-- 统计细分 -->
-  <div class="padding-1">
+  <div class="padding-1 account-details">
     <div class="padding-t-2 padding-b-2 overflow-hid">
       <div class="u-pull-left half border-grey-right">
-        <img class="u-pull-left" src="/images/icon4_account.png" width="30%">
+        <img class="u-pull-left margin-t-0p5" src="/images/icon4_account.png">
         <div class="u-pull-left">
           <span class="ft-grey2">&nbsp;累计消费</span>
           <br>
-          <span class="ft-blue3">&nbsp;<strong class="ft-1p6">{{userAccount.consumptionQuota | number:2}}</strong><small>元</small></span>
+          <span class="ft-blue3">&nbsp;<strong class="ft-1p8">{{userAccount.consumptionQuota || 0 | number:2}}</strong><small>元</small></span>
         </div>
       </div>
       <div class="u-pull-left half">
         <div class="u-pull-right">
           <span class="ft-grey2">&nbsp;累计节省</span>
           <br>
-          <span class="ft-green">&nbsp;<strong class="ft-1p6">{{userAccount.discountAmount|number:2}}</strong><small>元</small></span>
+          <span class="ft-green">&nbsp;<strong class="ft-1p8">{{userAccount.discountAmount || 0 |number:2}}</strong><small>元</small></span>
         </div>
-        <img class="u-pull-right" src="/images/icon2_account.png" width="30%">
+        <img class="u-pull-right margin-t-0p5" src="/images/icon2_account.png">
       </div>
     </div>
     <div class="padding-t-2 padding-b-2 overflow-hid">
       <div class="u-pull-left half border-grey-right">
-        <img class="u-pull-left" src="/images/icon3_account.png" width="30%">
+        <img class="u-pull-left margin-t-0p5" src="/images/icon3_account.png">
         <div class="u-pull-left">
           <span class="ft-grey2">&nbsp;正在赚钱白条</span>
           <br>
-          <span>&nbsp;<strong class="ft-1p6">{{userAccount.waitingCapital|number:2}}</strong><small>元</small></span>
+          <span>&nbsp;<strong class="ft-1p8">{{userAccount.waitingCapital || 0 |number:2}}</strong><small>元</small></span>
         </div>
       </div>
       <div class="u-pull-left half">
         <div class="u-pull-right">
           <span class="ft-grey2">&nbsp;赚取利息</span>
           <br>
-          <span>&nbsp;<strong class="ft-1p6">{{userAccount.receivedProfit|number:2}}</strong><small>元</small></span>
+          <span>&nbsp;<strong class="ft-1p8">{{userAccount.receivedProfit || 0 |number:2}}</strong><small>元</small></span>
         </div>
-        <img class="u-pull-right" src="/images/icon1_account.png" width="30%">
+        <img class="u-pull-right margin-t-0p5" src="/images/icon1_account.png">
       </div>
     </div>
   </div>
@@ -117,7 +119,7 @@
         <br>
         <span>{{'2015-06-06 18:25'}}</span>
       </div>
-      <img src="/images/status_account.png" width="35%">
+      <img src="/images/status_account.png">
     </div>
   </div>
 </div>
