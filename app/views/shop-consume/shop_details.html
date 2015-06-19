@@ -1,4 +1,4 @@
-<!doctype html>
+<!-- <!doctype html>
 <html class="no-js">
 <head>
 	<meta charset="utf-8">
@@ -13,7 +13,7 @@
 	<link type="text/css" rel="stylesheet" href="../css/iou.css"/>
 </head>
 
-<body class="bg_white">
+<body class="bg_white"> -->
 
 
 <div class="shop-details bg-white">
@@ -24,18 +24,19 @@
 	<hr class="margin-0 border-dotted-top clear">
 	<div class="padding-1">
 		<span>可用白条（元）：</span>
-		<div class="ft-blue3 ft-1p8 ft-bold">{{account.availableQuota | number:2}}</div>
+		<span class="ft-blue3 ft-1p8 ft-bold">{{account.availableQuota | number:2}}</span>
 	</div>
 	<hr class="border-width margin-0 border-grey">
 	<div class="padding-1 overflow-hid">
 		<div class="overflow-hid margin-b-1"><span class="ft-orange1 ft-1p2 u-pull-right">请核对店员姓名</span><span>付款到：</span></div>
 		<div class="">
-			<select class="width-100 margin-b-1" ng-model="seller" ng-options="seller.sellerName for seller in shop.sellers">
+			<select class="width-100 margin-b-1" ng-model="seller" ng-options="seller.sellerName for seller in shop.sellers" required>
+			
 			    
 			</select>
 		</div>
 		<div class="margin-b-1">消费金额（元）：</div>
-		<input type="number" class="width-100" placeholder="请输入消费金额" ng-model="consumeAmount" required ng-pattern="/^([1-9][\d]{0,7}|0)(\.[\d]{1,2})?$/" ng-focus>
+		<input type="number" class="width-100" placeholder="请输入消费金额" ng-model="consumeAmount" required ng-pattern="/^([1-9][\d]{0,7}|0)(\.[\d]{1,2})?$/" >
 		<!-- <hr class="mg_b150per_rem"> -->
 		<div class="border-grey-top border-grey-bottom padding-t-1 padding-b-1">
 			<!-- <span class="fr mg_t-35per_rem">共节省(元)：<label class="f_size_180per_rem font_orange2">{{consumeAmount * (1 - shop.rebate) | number:2}}</label></span> -->
